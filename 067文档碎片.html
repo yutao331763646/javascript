@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+	
+</style>
+
+<script src="js/common.js"></script>
+<script type="text/javascript">
+	onload = function() {
+		var start = new Date().getTime();
+		
+		var frag = document.createDocumentFragment();
+		for(var i=0; i<100000; i++){
+			var op = document.createElement("p");
+			op.innerText = i;
+			frag.appendChild(op);
+		}
+		
+		document.body.appendChild(frag);
+		
+		/*
+		for(var i=0; i<100000; i++){
+			var op = document.createElement("p");
+			op.innerText = i;
+			document.body.appendChild(op);
+		}
+		*/
+		var end = new Date().getTime();
+		
+		console.log(end - start);
+	}
+</script>
+
+</head>
+
+<body>
+	
+</body>
+</html>

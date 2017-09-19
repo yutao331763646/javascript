@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		  *{
+				padding:0;margin:0;
+			}
+			#begin{
+			  position:absolute;
+				left:600px;
+				top:600px;
+				width:100px;
+			}
+			body{
+			  // background:url(s00.jpg) no-repeat;
+				// background-size:cover;
+				background:#000;
+			}
+			.char{
+			  position:absolute;
+				left:0;
+				top:0;
+				width:30px;
+				height:30px;
+				border-radius:50%;
+				background:rgba(255,255,255,0.8);
+				font-size:30px;
+				text-align:center;
+				line-height:30px;
+			}
+			.scores{
+				position:absolute;
+				right:100px;
+				top:100px;
+				font-size:50px;
+				text-align:center;
+				line-height:100px;
+				background:pink;
+				width:100px;
+				height:100px;
+			}
+		</style>
+		<script >
+		 /**
+			功能：打字游戏
+      步骤：1.点击按钮开始，在页面上不断添加一些字母（创建节点）
+              字母从上面开始向下运动（定时器）
+            2.在键盘上输入相关的字母（onkeydown），如果该字母存在，则删除它（删除节点）
+            3.如果有字母达到了高度的最大值，game over 	location.reaload(true);					
+		  */
+		  window.onload=function(){
+			  var begin=document.querySelector("#begin");
+				var viewWidth=document.documentElement.clientWidth-100;
+				var str="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+				var t= 100;  //字母向下运动的时间参数
+				var step = 10;// 字母向下运动的距离参数
+				var timer; //用来生成一堆字母的定时器变量
+				var score=0;
+				//console.log(begin);
+				begin.onclick=function(){
+				  createChars(); //在页面上创建字母
+				}
+				
+				document.onkeydown=function(evt){
+					 evt=evt||window.event;
+					 var code= evt.keyCode||evt.which;
+					 var _char= document.getElementsByClassName("char");
+					 for(var i=0;i<_char.length;i++){
+						 if(code==_char[i].innerHTML.charCodeAt(0)){
+							 clearInterval(_char[i].timer);
+							 document.body.removeChild(_char[i]);
+							 var count=document.createElement("div");
+							 count.className="scores";
+							 count.innerHTML= ++score;
+							 document.body.appendChild(count);
+							 setTimeout(function(){
+								 document.body.removeChild(count); 
+							 },1000);
+							 break;
+						 }
+					 }
+					
+				}
+				
+				function createChars(){
+					timer=setInterval(function(){
+						createOneChars();
+					},500);
+					
+				}
+				
+				function createOneChars(){
+				  //在页面上创建一个字母，然后向下运动
+					var chars= document.createElement("div");
+					chars.className="char";
+					chars.style.left= Math.ceil(Math.random()*viewWidth)+50+"px";
+					//chars.style.top= "100px"; //test
+					chars.innerHTML= str[Math.floor(Math.random()*26)];
+					//chars.style.color= "#"+Math.floor(Math.random()*16581375).toString(16);
+					document.body.appendChild(chars);
+					//向下运动
+					chars.timer=setInterval(function(){
+						chars.style.top= chars.offsetTop+step+"px";
+					  //限制运动的范围
+						if(chars.offsetTop>=600){
+							alert("Game Over");
+							location.reload(true);
+						}
+					},t);
+				}
+			}
+		
+		</script>
+	</head>
+	<body >
+	  <input type="button" value="开始" id="begin" />
+	</body>
+	<script>
+	</script>
+</html>

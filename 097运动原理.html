@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box" style="width: 50px; height: 50px; background: black; position: absolute; left: 0; top: 0;">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		var ball = document.getElementById("box");
+		setInterval(function(){
+			ball.style.left = ball.offsetLeft + 5 + "px";
+			ball.style.top = ball.offsetTop + 5 + "px";
+		},30);
+	</script>
+</html>

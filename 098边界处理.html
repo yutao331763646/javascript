@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<div id="box" style="width: 50px; height: 50px; background: black; position: absolute; left: 0; top: 0;">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		var ball = document.getElementById("box");
+		var t = setInterval(function(){
+			
+			if(ball.offsetLeft >= (window.innerWidth-ball.offsetWidth)) {
+				ball.style.left = window.innerWidth-ball.offsetWidth + "px";
+				clearInterval(t);	
+				return;
+			}
+			
+			if(ball.offsetTop >= (window.innerHeight-ball.offsetHeight)) {
+				ball.style.top = window.innerHeight-ball.offsetHeight + "px";
+				clearInterval(t);
+				return;
+			}
+			ball.style.left = ball.offsetLeft + 5 + "px";
+			ball.style.top = ball.offsetTop + 3 + "px";
+		},30);
+	</script>
+</html>

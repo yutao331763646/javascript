@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<div id="box" style="width: 50px; height: 50px; background: black; position: absolute; left: 0; top: 400px; border-radius: 50%;">
+			
+		</div>
+		
+		<div style="height: 1px; width: 100%; background: black; position: absolute; left: 0; top: 425px;">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		var ball = document.getElementById("box");
+		var speedx = 50;
+		var t = setInterval(function(){
+			ball.style.left = ball.offsetLeft + speedx + "px";
+			speedx-=2;
+			if(speedx == 0) {
+				clearInterval(t);
+			}
+		}, 30);
+		
+		
+	</script>
+</html>

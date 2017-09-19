@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<script src="cookie.js"></script>
+<script type="text/javascript">
+	onload = function(){
+		var photo = document.getElementById("photo");
+		
+		photo.style.left = getCookie("left") + "px";
+		photo.style.top = getCookie("top") + "px";
+		
+		photo.addEventListener("mousedown", function(e){
+			var e = e || event;
+			var mouse = {x:e.offsetX, y:e.offsetY};
+			document.onmousemove = function(e){
+				var e = e || event;
+				photo.style.left = e.clientX-mouse.x+"px";
+				photo.style.top = e.clientY-mouse.y+"px";
+			}
+		});
+		document.onmouseup = function(){
+			setCookie("left", photo.offsetLeft, 30);
+			setCookie("top", photo.offsetTop, 30);
+			this.onmousemove = null;
+		}
+	}
+</script>
+</head>
+	
+<body>	
+	<div id="photo" style="position:absolute; left:0; top:0; padding:5px; background:#ccc; border-radius:5px; box-shadow:0 0 5px #111">
+		<img src="201604172240101f2eb.jpg" width=400 />
+		<div style="position:absolute; left:5px; top:5px; width:400px; height:273px; background:rgba(255,255,255,0.0)"></div>
+	</div>
+</body>
+</html>

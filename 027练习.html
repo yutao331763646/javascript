@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+			var a = [[],[],[],[],[]];
+			for(var i=0; i<25; i++){
+				a[parseInt(i/5)].push(i+1);
+			}
+			console.log(a);
+			
+			for(var i=0; i<a.length; i++){
+				for(var j=0; j<i+1; j++){
+					document.write(a[i][j] + "\t");
+				}
+				document.write("<br>");
+			}
+		</script>
+    </head>
+    <body>	
+		
+    </body>
+</html>
+

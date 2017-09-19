@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0; padding: 0;
+		}
+		html,body{width: 100%; height: 100%; overflow: hidden;}
+		
+		.main{
+			width: 900px;
+			height: 80px;
+			margin: 50px auto;
+		}
+		.main ul{
+			list-style: none;
+		}
+		.normal {
+			display: inline-block;
+			width: 100px; height: 120px;
+			border-radius: 6px;
+			margin-left: 5px;
+			background: darkcyan;
+			color: yellow; font-size: 30px;
+			font-family: "微软雅黑";
+			text-align: center; line-height: 120px;
+		}
+		.dragele {
+			list-style: none;
+			position: absolute;
+			width: 100px; height: 120px;
+			border-radius: 6px;
+			border: 1px dashed black;
+			background: rgba(0,0,0,0.5);
+			color: yellow; font-size: 30px;
+			font-family: "微软雅黑";
+			text-align: center; line-height: 120px;
+		}
+		.info{
+			width: 900px;
+			height: 300px;
+			line-height: 300px;
+			font-size: 40px;
+			font-family: "微软雅黑";
+			font-weight: bold;
+			text-align: center;
+			color: grey;
+			margin: 30px auto;
+			
+		}
+	</style>
+	<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+	<body>
+		<div class="main">
+			<ul>
+				<li class="normal">18</li>
+				<li class="normal">15</li>
+				<li class="normal">6</li>
+				<li class="normal">16</li>
+				<li class="normal">24</li>
+				<li class="normal">9</li>
+				<li class="normal">33</li>
+				<li class="normal">60</li>
+				
+			</ul>
+		</div>
+		<div class="info">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		$list = $(".main li");
+		$info = $(".info");
+		$list.on("mousedown",function(evt){
+			var x = evt.offsetX, y = evt.offsetY;
+			var $this = $(this);
+			$dragEle = $this.clone();
+			dragindex = $(this).index();
+			$dragEle.appendTo($("body"));
+			$dragEle.removeClass("normal").addClass("dragele");
+			$dragEle.css({"left":evt.pageX-x,"top":evt.pageY-y});
+			$("document,body").on("mousemove",function(evt){
+				$dragEle.css({"left":evt.pageX-x,"top":evt.pageY-y});
+				
+				//找出距离最短
+				var minDis = distance($dragEle, $list.eq(0));
+				targetindex = 0;
+				$list.each(function(index){
+					if(distance($dragEle,$(this)) < minDis) {
+						minDis = distance($dragEle,$(this));
+						targetindex = index;
+					}
+				});
+				console.log(minDis);
+				if(minDis < 10 && Number($dragEle.text())>Number($list.eq(targetindex).text()) ) {
+					$dragEle.css({"background":"forestgreen","color":"black"});
+					swapable = true;
+					$info.text("允许交换");
+				} else {
+					$dragEle.css({background: "rgba(0,0,0,0.5)", color:"yellow"});
+					swapable = false;
+					$info.text("");
+				}
+			});
+		});
+		$("document,body").on("mouseup",function(evt){
+			if(swapable) {
+				swap($list.eq(dragindex),$list.eq(targetindex));
+			}
+			$("document,body").off("mousemove");
+			$dragEle.remove();
+		});
+		
+		function swap(obj1, obj2) {
+			$info.text("交换中...");
+			var $c1 = obj1.clone();
+			obj1.css({background:"white",border:"1px dashed black"});
+			$c1.appendTo("body")
+				.css("position","absolute")
+				.css({left:obj1.offset().left,top:obj1.offset().top})
+				.animate({left:obj2.offset().left,top:obj2.offset().top}, 2000, function(){
+					obj2.text($c1.text());
+					obj1.css({background:"darkcyan", border:"none"});
+					$c1.hide();
+				});
+			var $c2 = obj2.clone();
+			obj2.css({background:"white",border:"1px dashed black"});
+			$c2.appendTo("body")
+				.css("position","absolute")
+				.css({left:obj2.offset().left,top:obj2.offset().top})
+				.animate({left:obj1.offset().left,top:obj1.offset().top}, 2000, function(){
+					obj1.text($c2.text());
+					obj2.css({background:"darkcyan", border:"none"});
+					$c2.hide();
+					$info.text("交换完毕");
+					setTimeout(function(){
+						$info.text("");
+					},500);
+				});
+			
+			swapable = false;
+		}
+		
+		function distance(obj1,obj2){
+			return Math.sqrt( Math.pow(obj1.offset().left-obj2.offset().left,2) + Math.pow(obj1.offset().top-obj2.offset().top,2));
+		}
+	</script>
+</html>

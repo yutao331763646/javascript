@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<script>
+		onload = function(){
+			var btn = document.getElementById("pbtn");
+			btn.onclick = function(){
+				console.log( arguments[0].button )
+			}
+		}
+	</script>
+	<body>
+		<button id="pbtn" class="btn btn-primary btn-lg">按钮</button>
+	</body>
+
+</html>

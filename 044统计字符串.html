@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <style type="text/css">
+      
+     </style>
+	 <script src="js/common.js"></script>
+     <body>
+     </body>
+     <script type="text/javascript">
+		//已知字符串“a,a,b,c,c,d,f,g,j,j”编程实现以下功能。
+		//统计每个字符出现的次数，结果显示 a 2、b 1、c 2、d1
+		//去掉重复的字符，使结果显示 abcdfgj
+		
+		var arr = "a,a,b,c,c,d,f,g,j,j".split(",");
+		var obj = {};
+		for(var i=0; i<arr.length; i++){
+			if(obj[arr[i]]) {
+				obj[arr[i]] += 1;
+			} else {
+				obj[arr[i]] = 1;
+			}	
+		}
+		console.log(obj);
+		
+		var arr2 = [];
+		for(var attr in obj){
+			arr2.push(attr);
+		}
+		
+		
+     </script>
+</html>

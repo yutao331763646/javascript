@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+		
+	<body>
+	</body>
+	<script type="text/javascript">
+		function Ipod(){
+			this.playmusic = function(){
+				console.log("playmusic");
+			}
+		}
+		
+		function Itouch(){
+			Ipod.apply(this.arguments)
+			this.playgame = function(){
+				console.log("playgame");
+			}
+		}
+		
+		//console.log(Itouch.prototype );
+		
+		Itouch.prototype = new Ipod();
+		var it = new Itouch();
+		
+		it.playmusic();		
+		it.toString();
+		
+		
+	
+	</script>
+</html>

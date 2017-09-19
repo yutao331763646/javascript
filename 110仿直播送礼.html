@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 400px;
+            height: 600px;
+            background: #000000;
+            border: 5px solid gray;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+		#box .conrollBar {
+			width: 400px; height: 50px; background: rgba(255,255,255,0.6);
+			position: absolute; left: 0; bottom: 0;
+		}
+		#box .conrollBar .like {
+			color: #333; cursor: pointer; float: right;
+			margin-right: 30px; margin-top: 10px;
+		}
+        #box .great {
+            position: absolute;
+            right: 30px;
+            bottom: -50px;
+            opacity: 1;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="box">
+    	<div class="conrollBar">
+    		<span class="like fa fa-thumbs-up fa-2x">
+    			
+    		</span>
+    	</div>
+    </div>
+</body>
+<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var likebtn = document.getElementById("box").getElementsByClassName("like")[0];
+  	likebtn.addEventListener("click", function(){
+  		this.style.color = "white";
+  		this.style.transform = "scale(1.8)";
+  		setTimeout(function(){
+  			this.style.color = "#333";
+  			this.style.transform = "scale(1)";
+  		}.bind(this),50);
+  		
+  		new Great().appendTo(box).init().floatup();
+  	});
+  	
+  	function Great(){
+  		this.element = document.createElement("span");
+  		this.appendTo = function(target){
+  			target.appendChild(this.element);
+  			return this;
+  		}
+  		this.init = function(){
+  			this.element.className = "fa fa-thumbs-up great";
+  			//颜色随机
+  			this.element.style.color = "rgb("+randomInt(0,255)+","+randomInt(0,255)+","+randomInt(0,255)+")";
+  			//大小随机
+  			this.element.style.fontSize = randomInt(12,40)+"px";
+  			//漂浮速度随机
+  			this.speed = randomInt(4,10);
+  			//摇摆的幅度随机
+  			this.range = randomInt(10,50);
+  			return this;
+  		}
+  		this.floatup = function(){
+  			var deg = 0; //X轴的水平距离
+  			this.timer = setInterval(function(){
+  				this.element.style.bottom = 50 + deg + "px";
+  				this.element.style.right = 30 + this.range*Math.sin(deg*Math.PI/180) + "px";
+				this.element.style.opacity = getComputedStyle(this.element)["opacity"] - 0.02;		
+  				if(this.element.offsetTop < -this.element.offsetHeight || this.element.style.opacity <= 0) {
+  					clearInterval(this.timer);
+  				}
+  				deg += this.speed; //上升的速度
+  			}.bind(this),30);
+  		}
+  	}
+  	
+</script>
+
+</html>

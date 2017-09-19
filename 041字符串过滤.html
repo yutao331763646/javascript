@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <style type="text/css">
+          *{
+              padding: 0; margin: 0;
+          }
+          #edit {
+              margin: 0 auto;
+              width: 1000px;
+              text-align: center;
+              overflow: hidden;
+          }
+          #commentlist {
+              margin: 0 auto;
+              width: 1000px;
+          }
+          #commentlist .comment{
+              width: 800px;
+              min-height: 80px;
+              margin: 20px auto;
+              background: darkkhaki;
+              border-radius: 3px;
+              position: relative;
+              overflow: hidden;
+          }
+          #commentlist .comment p{
+              margin: 10px 10px;
+          }
+          #sendBtn {
+              display: block;
+              margin: 10px auto;
+              width: 100px;
+              height : 30px;
+              line-height: 30px;
+              background: linear-gradient(to bottom, #faa, #f40);
+              box-shadow: 0 0 2px #000;
+              border-radius: 4px;
+          }
+
+          #sendBtn:hover{
+              cursor: pointer;
+              background: linear-gradient(to bottom, #fee, #f40);
+          }
+     </style>
+	 <script src="js/common.js"></script>
+     <body>
+          <div id="edit">
+              <p>请输入你的发言:</p>
+              <p>
+                   <textarea id="msginput" name="" rows="5" cols="60"></textarea>
+              </p>
+              <p><a class="send" id="sendBtn">发送</a></p>
+          </div>
+          <div id="commentlist">
+              <div class="comment">
+                   <p>张三疯:</p>
+                   <p style="word-break: break-all;">
+                   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                   </p>
+                   <p style="text-align: right;">2016/9/4 16:06</p>
+              </div>
+              <div class="comment">
+                   <p>张三疯:</p>
+                   <p style="word-break: break-all;">
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                   </p>
+                   <p style="text-align: right;">2016/9/4 16:06</p>
+              </div>
+              <div class="comment">
+                   <p>张三疯:</p>
+                   <p style="word-break: break-all;">
+                   xxxxxxxxxxxxxxxxxxxxxx
+                   </p>
+                   <p style="text-align: right;">2016/9/4 16:06</p>
+              </div>
+          </div>
+     </body>
+     <script type="text/javascript">
+          var sendBtn = document.getElementById("sendBtn");
+		
+          sendBtn.onclick = function(){
+              var content = edit.children[1].children[0].value;
+			  /** ========================================== */
+			  content = strfilter(content);
+			  /** ========================================== */
+              var newComent = commentlist.children[0].cloneNode(true);
+			  
+              newComent.children[1].innerHTML = content;
+              newComent.children[2].innerText = new Date().toLocaleString()
+              commentlist.children[0].parentNode.insertBefore(newComent, commentlist.children[0]);
+			  
+			  msginput.value = "";
+          }
+     </script>
+</html>

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+	</head>
+	<style type="text/css">
+		#wrap {
+			position: relative;
+			width: 300px;
+			height: 30px;
+			background: gainsboro;
+			border: solid 1px gray;
+		}
+		#wrap .drag {
+			width: 40px; height: 30px;
+			background: white url(img/1.png) no-repeat center;
+			position: absolute; left: 0; top: 0;
+		}
+		#wrap .progress {
+			width: 0px; height: 30px;
+			position: absolute; left: 0; top: 0;
+			background: greenyellow;
+		}
+	</style>
+	<body>
+
+		<script type="text/javascript">
+			onload = function(){
+				var drag = document.getElementsByClassName("drag")[0];
+				var progress = document.getElementsByClassName("progress")[0];
+				var wrap = document.getElementById("wrap");
+				drag.onmousedown = function(e){
+					var offset = {x:e.offsetX, y:e.offsetY};
+					document.onmousemove = function(e){
+						drag.style.left = Math.min(wrap.offsetWidth-drag.offsetWidth, Math.max(0, e.clientX - offset.x)) + "px";
+						progress.style.width = drag.style.left;
+						
+						if(drag.offsetLeft >= (wrap.offsetWidth-drag.offsetWidth)) {
+							drag.style.background = "white url(img/2.png) no-repeat center";
+							document.onmousemove = "";
+						}
+					}
+				}
+			}
+		</script>
+
+		<div id="wrap">
+			<div class="progress"></div>
+			<div class="drag"></div>
+		</div>
+	</body>
+
+</html>

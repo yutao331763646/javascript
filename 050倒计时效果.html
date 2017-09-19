@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <style type="text/css">
+      
+     </style>
+	 <script src="js/common.js"></script>
+     <script type="text/javascript">
+		//2067
+		var end = new Date("2067.1.1");
+		setInterval(function(){
+			var total = end.getTime() - new Date().getTime(); //毫秒
+			var days = Math.floor( total/(1000*3600*24) );
+			var hours = Math.floor( (total - days*1000*3600*24)/(1000*3600) );
+			var seconds = total%(3600*1000)/1000 ;
+			
+			document.getElementById("txt").innerHTML = days+"天,"+hours+"小时,"+seconds+"秒";
+		},1000);
+     </script>
+     <body>
+		离退休时间：
+		<div id="txt">
+			
+		</div>
+	</body>
+
+
+</html>

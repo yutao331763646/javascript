@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	#tab {
+	}
+	#tab td{
+		border: solid 1px black;
+		padding: 10px;
+	}
+	.cover {
+		background: black;
+	}
+	.food {
+		background: green;
+	}
+</style>
+	<body>
+		<table id="tab">
+		</table>
+	</body>
+	
+	<script type="text/javascript">
+		onload = function(){
+			for(var i=0; i<20; i++) {
+				var tr = document.createElement("tr")
+				for(var j=0; j<20; j++) {
+					var td = document.createElement("td");
+					tr.appendChild(td);
+				}
+				tab.appendChild(tr);
+			}
+		}
+	</script>
+</html>

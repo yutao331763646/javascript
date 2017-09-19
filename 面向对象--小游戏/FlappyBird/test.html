@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.ball {
+			width: 50px; height: 50px; background: red;
+			border-radius: 50%; position: absolute;
+			left: 200px; top: 100px;
+		}
+	</style>
+	<body>
+		<div id="ball" class="ball">
+			
+		</div>
+	</body>
+	
+	<script>
+		var ball = document.getElementById("ball");
+		var speedy = 0;
+		setInterval(function(){
+			ball.style.top = ball.offsetTop /*当前的left是多少*/ + ++speedy + "px";
+		},30);
+		
+		document.onclick = function() {
+			speedy -= 20;
+		}
+	</script>
+</html>

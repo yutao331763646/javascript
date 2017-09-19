@@ -1,0 +1,107 @@
+*{margin:0; padding:0;}
+html,body{width:100%; height:100%; overflow: hidden;}
+.main{
+	margin: auto;
+	height: 100%;
+	background: url(images/bg.jpg) repeat;
+	background-position-y: 0px;
+	width: 600px;
+	position: relative;
+}
+.weapon{
+	width: 59px; height: 103px;
+	position: absolute;
+	background: url(images/prop2.png);
+	animation: swing 3s infinite;
+	z-index: 999;
+}
+
+
+.score {
+	position: absolute;
+	width: 100px; height: 50px;
+	left: 0; top: 0;
+}
+.cover{
+	width: 100%; height: 100%;
+	position: absolute; 
+	left: 0; top: 0;
+	background: rgba(0,0,0,0.6);
+	display: none;
+	z-index: 9999;
+}
+.options{
+	position: absolute;
+	list-style: none;
+	margin: auto;
+	left: 0; right: 0; top: 150px; 
+	width: 200px;
+	height: 300px;
+	
+}
+.options li{
+	border-radius: 20px;
+	box-shadow: 0 0 2px 1px black;
+	float: left;
+	width: 200px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	margin-bottom: 20px;
+	background: gainsboro;
+	color: black;
+	font: "仿宋";
+	font-size: 16px;
+	cursor: pointer;
+}
+.logo{
+	position: absolute;
+	left: 0; right: 0; top: 25%; 
+	margin: auto;
+	width: 428px; height: 104px;
+	background: url(images/logo.png) no-repeat;	
+}
+.loading{
+	position: absolute;
+	left: 0; right: 0; top: 60%;
+	margin: auto;
+	width: 192px; height: 41px;
+	background: url(images/loading1.png) no-repeat;
+}
+.my-warplain{
+	position: absolute;
+	width: 98px; height: 122px;
+	background: url(images/me.png) no-repeat;
+}
+.bullet{
+	position: absolute;
+	width: 7px; height: 18px;
+	background: url(images/bullet.png) no-repeat;
+}
+.bullet_die{
+	position: absolute;
+	width: 41px; height: 39px;
+	background: url(images/die1.png) no-repeat;
+}
+.enemy-small{
+	position: absolute;
+	width: 59px; height: 36px;
+	background: url(images/plane1.png) no-repeat;
+}
+.enemy-middle{
+	position: absolute;
+	width: 70px; height: 92px;
+	background: url(images/plane2.png) no-repeat;
+}
+.enemy-large{
+	position: absolute;
+	width:165px; height: 256px;
+	background: url(images/plane3.png) no-repeat;
+}
+
+@keyframes swing{
+	0% { transform: rotateZ(15deg);}
+	50% { transform: rotateZ(-15deg);}
+	100% { transform: rotateZ(15deg);}
+}
+

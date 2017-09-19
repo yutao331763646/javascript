@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+	<style type="text/css">
+		    body{
+			    background-color:rgb(177, 208,224); font: normal 12px Trebuchet MS; color:#000;
+		    }
+		    .roundedCorners{ 
+			    width:220px; padding:10px;
+			    background-color:#DDEEF6; 
+			    box-shadow: 0px 0px 10px 0px #888888;
+			    border:1px solid #DDEEF6;
+			    border-radius:6px;
+			    margin: auto;
+		    }
+		    .roundedCorners-textbox{ 
+				border:1px solid #999; width:160px;
+		    }
+			.checkbox {
+				margin-left: 30px;
+				border:1px solid #999; width:20px;
+			}
+	</style>
+</head>
+<script type="text/javascript" src="js/common.js" ></script>
+<script>
+	onload = function(){
+		var subbtn = document.getElementById("submitbtn");
+		var saveNP = document.getElementsByClassName("checkbox")[0];
+		
+		document.getElementById("username").value = Cookie.get("user");
+		document.getElementById("password").value = Cookie.get("pwd");
+		
+		subbtn.addEventListener("click", function(){
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+			if(saveNP.checked) {
+				var d = new Date();
+				d.setDate(d.getDate()+10);
+				Cookie.set("user", username, d, "/");
+				Cookie.set("pwd", password, d, "/");
+			}
+		});
+	}
+	
+</script>
+<body>
+	<form action="http://www.baidu.com" method="get">	
+		<div class="roundedCorners">
+			<label>账号</label>&nbsp;
+			<input id="username" type="text" class="roundedCorners-textbox" /><br /><br />
+			<label>密码</label>&nbsp;
+			<input id="password" type="text" class="roundedCorners-textbox" /><br /><br />	
+		    	<input name="saveNP" type="checkbox" class="checkbox" />
+				<label>10天内免登陆</label>
+		    	<br/><br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button id="submitbtn" >确定</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="reset" value="清空" />
+		</div>
+	</form>	
+</body>
+</html>

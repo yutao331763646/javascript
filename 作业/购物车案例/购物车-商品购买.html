@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+		
+		<style type="text/css">
+			body{
+				padding-top: 50px;
+			}
+			div[class^=col] {
+				padding: 10px
+			}
+			.item{
+				height: 120px;
+				border-radius : 4px;
+				background : #eee;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<script src="common.js"></script>
+	<script>
+		onload = function(){
+			var btnlist = document.getElementsByClassName("btn-buy");
+			btnlist = Array.from(btnlist);
+			btnlist.forEach(function(item,index){
+				item.addEventListener("click", function(e){
+					var e = e || event;
+					var price = item.previousElementSibling.children[0].innerText;
+					var code = item.previousElementSibling.children[1].innerText;
+					var pname = item.parentNode.children[0].innerText;
+					
+					var obj = {
+						"price" : price,
+						"code" : code,
+						"pname" : pname
+					}
+					//从cookie中取出字符串，并转化为数组	
+					var arr = null;
+					var cookiestr = Cookie.get("goods");
+					
+					
+					if( cookiestr == "" || cookiestr == null) {
+						arr = []; //第一次，创建空数组
+					} else {
+						arr = JSON.parse(cookiestr); //第二次及以后，将cookie字符串还原成数组
+					}
+					
+					//将obj对arr进行对比过滤，得到结果resarr
+					var resarr = arr.filter(function(item, index){
+						return obj.pname == item.pname && obj.price == item.price && obj.code == item.code;
+					});
+					
+					
+					//如果resarr长度大于0，表示cookie中已经存在该商品
+					if(resarr.length > 0) {
+						resarr[0].count++; //计数器加1
+					} else {
+						obj.count = 1;
+						//向数组添加新的商品信息
+						arr.push(obj);
+					}
+					
+					//将新的数组重新转化为字符串，写到cookie中
+					Cookie.set("goods", JSON.stringify(arr), "8", "/");
+					
+					//"[{price:xxx}]"
+				})
+			})
+		}
+	</script>
+	
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-sm-9 col-xs-12">
+					<div class="item">
+						<p class="text-center">商品1</p>
+						<p>价格： $<code>56.3</code> 编号：<span>2310</span></p>
+						<a class="btn btn-warning btn-sm btn-buy">购买</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-9 col-xs-12">
+					<div class="item">
+						<p class="text-center">商品2</p>
+						<p>价格： $<code>999</code> 编号：<span>5610</span></p>
+						<a class="btn btn-warning btn-sm btn-buy">购买</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-9 col-xs-12">
+					<div class="item">
+						<p class="text-center">商品3</p>
+						<p>价格： $<code>156</code> 编号：<span>1306</span></p>
+						<a class="btn btn-warning btn-sm btn-buy">购买</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-9 col-xs-12">
+					<div class="item">
+						<p class="text-center">商品4</p>
+						<p>价格： $<code>99.5</code> 编号：<span>9985</span></p>
+						<a class="btn btn-warning btn-sm btn-buy">购买</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+	</body>
+	
+
+</html>

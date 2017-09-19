@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	</head>
+	<style type="text/css">
+		.wrap {
+			height: 50px; border: solid 1px gray;
+			position: relative;
+		}
+		.wrap .bgc{
+			background: #49B62B;
+			height: 48px; width: 0px;
+		}
+		.wrap .dragbox {
+			position: absolute; left: 0; top: 0;
+			width: 35px; height: 48px;
+			background: #CBD8E6;
+		}
+	</style>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col col-lg-12">
+					<div class="page-header">
+						<h1>Example page header <small>Subtext for header</small></h1>
+					</div>
+					<form id="regForm" action="https://www.baidu.com" class="form-horizontal">
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">
+								<h4>姓名</h4></label>
+							<div class="col-sm-10">
+								<input type="text" pass="false" pattern="username" name="checkinput" class="form-control input-lg" id="inputEmail3" placeholder="username">
+								<span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">
+								<h4>身份证号</h4></label>
+							<div class="col-sm-10">
+								<input type="text" pass="false"  pattern="identity" name="checkinput" class="form-control input-lg" id="inputEmail3" placeholder="id">
+								<span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">
+								<h4>邮箱</h4></label>
+							<div class="col-sm-10">
+								<input type="text" pass="false"  pattern="email" name="checkinput" class="form-control input-lg" id="inputEmail3" placeholder="Email">
+								<span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">
+								<h4>个人主页</h4></label>
+							<div class="col-sm-10">
+								<input type="text" pass="false" pattern="pageurl" name="checkinput" class="form-control input-lg" id="inputEmail3" placeholder="http://">
+								<span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">
+								<h4>出生日期</h4></label>
+							<div class="col-sm-10">
+								<input type="text" pass="false" pattern="birthday" name="checkinput" class="form-control input-lg" id="inputEmail3" placeholder="Email">
+								<span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">
+								<h4>密码</h4></label>
+							<div class="col-sm-10">
+								<input type="text" pass="false" pattern="password" name="checkinput" class="form-control input-lg" id="inputEmail3" placeholder="Email">
+								<span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">
+								<h4>验证</h4></label>
+							<div class="col-sm-6">
+								<div id="dragcheck" pass="false" class="wrap">
+									<div class="bgc">
+										
+									</div>
+									<div class="dragbox">
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="registBtn" class="col-lg-2 col-lg-offset-2 btn btn-primary btn-lg">注册</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/draggable.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var dragbox = $(".dragbox")[0];
+	draggable(dragbox, {y:false, paddingRight:2, callback: function(section, distance){
+		this.previousElementSibling.style.width = distance.x + "px";
+		if( parseInt(this.style.left) == section.maxLeft ){
+			this.parentNode.setAttribute("pass", "true");
+		}
+	}});
+	
+	var regbtn = $("#registBtn");
+	var regform = $("#regForm");
+	
+	var inputs = $("input[name=checkinput]");
+	
+	
+	var 正则表达式们 = {
+		username : /^[a-zA-Z_]\w{5,19}$/,
+		identity : /^\d{17}[0-9X]$/,
+		email : /^[^@]+@[^@]+(\.[^@]+)+/,
+		pageurl : /^https?:\/\/.+:\d+\/?.*/,
+		birthday : /^\d{4}(\D\d{2}){2}$/,
+		password : /^[0-9a-zA-Z-_=&\$#@]{6,30}$/
+	}
+	
+	inputs.forEach(function(oInput){
+		oInput.addEventListener("keyup", function(){
+			var ispass = 正则表达式们[oInput.getAttribute("pattern")].test(this.value);
+			this.setAttribute("pass", ispass);
+			if(ispass) {
+				this.parentNode.parentNode.className = "form-group has-success";
+			} else {
+				this.parentNode.parentNode.className = "form-group has-error";
+			}
+		})
+	});
+	
+	
+	regbtn.addEventListener("click", function(){
+		
+		var allpass = inputs.every(function(oInput){
+			return oInput.getAttribute("pass") == "true";
+		})
+		
+		if(allpass && $("#dragcheck").getAttribute("pass")=="true") {
+			regform.submit();
+		}
+	})
+</script>

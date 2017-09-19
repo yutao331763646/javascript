@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//document.cookie = "pwd=123456";
+			//document.cookie = "age=20";
+			
+			var d = new Date();
+			d.setDate(d.getDate()+1);
+			document.cookie = "cart=1111111111; expires="+d + "; path=/";
+			//alert(document.cookie);
+			
+			getCookie("cart")
+			setCookie("cart","xxxxxx", new Date(), "/");
+		</script>
+	</body>
+</html>

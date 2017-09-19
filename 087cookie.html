@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+	<style type="text/css">
+		    body{
+			    background-color:rgb(177, 208,224); font: normal 12px Trebuchet MS; color:#000;
+		    }
+		    .roundedCorners{ 
+			    width:220px; padding:10px;
+			    background-color:#DDEEF6; 
+			    box-shadow: 0px 0px 10px 0px #888888;
+			    border:1px solid #DDEEF6;
+			    border-radius:6px;
+			    margin: auto;
+		    }
+		    .roundedCorners-textbox{ 
+				border:1px solid #999; width:160px;
+		    }
+			.checkbox {
+				margin-left: 30px;
+				border:1px solid #999; width:20px;
+			}
+	</style>
+</head>
+<script type="text/javascript" src="js/common.js" ></script>
+<script>
+	//path: 
+	//  path=/   cookie    a.html 
+	//  path = /main/jj/   ----->   a.html     cookie     b.html   可以
+	//  path = /main/kk/   ----->   a.html     不能
+	
+	function main(){
+		function jj(){
+			var a = 100;
+		}
+		function kk(){
+			console.log(a);
+		}
+	}
+</script>
+<body>
+	
+</body>
+</html>

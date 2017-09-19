@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+		
+		<style type="text/css">
+			body{
+				padding-top: 50px;
+			}
+			div[class^=col] {
+				padding: 10px
+			}
+			.item{
+				height: 120px;
+				border-radius : 4px;
+				background : #eee;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<script>
+		window.onload = function(){
+
+			var liststr = document.cookie;
+			var list = JSON.parse(liststr.substring(5));
+			
+			
+			
+		}
+	</script>
+	<body>
+		<div style="width:600px">
+			<table id="table_data" class="table table-hover">
+				<tr>
+				  <td class="active">商品名称</td>
+				  <td class="success">商品价格</td>
+				  <td class="warning">商品数量</td>
+				  <td class="danger">operation</td>
+				</tr>
+				<tr>
+				  <td class="text-center"><h5>商品2</h5></td>
+				  <td class="text-center"><h5>$999</h5></td>
+				  <td class="text-center" style="width:150px">
+					<div class="input-group">
+						<span class="input-group-addon input-sm">-</span>
+						<input type="text" class="form-control" placeholder="Amount">
+						<span class="input-group-addon input-sm">+</span>
+					</div>
+				  </td>
+				  <td class="text-center">
+					<button class="btn btn-danger btn-sm" href="#" role="delete">删除</button>
+				  </td>
+				</tr>
+			</table>
+			<hr>
+			<div class="text-center">
+				<a class="btn btn-primary btn-lg">提交订单</a>
+			</div>
+		</div>
+	</body>
+</html>
+

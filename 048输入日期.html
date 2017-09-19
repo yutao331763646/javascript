@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <style type="text/css">
+      
+     </style>
+	 <script src="js/common.js"></script>
+     <script type="text/javascript">
+		var d1 = new Date("2017.7.20");
+		var d2 = new Date("2017-8-8");
+		
+		log(d1.getTime());
+		log(d2.getTime());
+		
+		
+		log( Math.abs(d1.getTime()-d2.getTime())/ (1000*3600*24) );
+     </script>
+     <body>
+		请输入开始日期：<input type="text"  />
+		请输入结束日期：<input type="text"  />
+		<button>查询</button>
+     </body>
+
+</html>

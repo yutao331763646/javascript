@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+	<style type="text/css">
+		    body{
+			    background-color:rgb(177, 208,224); font: normal 12px Trebuchet MS; color:#000;
+		    }
+		    .roundedCorners{ 
+			    width:220px; padding:10px;
+			    background-color:#DDEEF6; 
+			    box-shadow: 0px 0px 10px 0px #888888;
+			    border:1px solid #DDEEF6;
+			    border-radius:6px;
+			    margin: auto;
+		    }
+		    .roundedCorners-textbox{ 
+				border:1px solid #999; width:160px;
+		    }
+			.checkbox {
+				margin-left: 30px;
+				border:1px solid #999; width:20px;
+			}
+	</style>
+</head>
+<script type="text/javascript" src="js/common.js" ></script>
+<script>
+	onload = function(){
+		//addEventListener
+		var btn = document.getElementById("btn");
+		btn.addEventListener("click", aaa);
+		function aaa(){
+			console.log(1);
+		}
+		btn.addEventListener("click", function(){
+			console.log(2);
+		});
+		btn.addEventListener("click", function(){
+			console.log(3);
+		});
+		
+		btn.removeEventListener("click", aaa);
+		
+		
+	}
+</script>
+<body>
+	<button id="btn">按钮</button>
+</body>
+</html>

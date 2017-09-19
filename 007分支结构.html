@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+			/*
+			var a = NaN;
+			if(a==10) {
+				console.log("ok");
+			}
+			*/
+			/*
+			if(条件) {
+				条件成立时，执行这句代码
+			} else {
+				否则，执行这句代码
+			}
+			*/
+			
+			/*
+			if(a) {
+				console.log("ok");
+			}
+			*/
+			
+			//根据数字，判断是否为闰年
+			var year = 2100;
+			
+			var con1 = year%400==0;
+			var con2 = year%100!=0 && year%4==0; 
+			
+			if( con1 || con2 ) {
+				console.log("是闰年！")
+			} else {
+				console.log("not是闰年！")
+			}
+			
+			
+			
+		</script>
+    </head>
+    <body>	
+	
+    </body>
+</html>
+

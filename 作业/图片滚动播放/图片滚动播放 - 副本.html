@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>无标题文档</title>
+		<link href="style.css" type="text/css" rel="stylesheet" />
+		<script src="startMove.js"></script>
+		<script type="text/javascript">
+			var currentImgIndex = 0;
+			var maxZindex = 1;
+			window.onload=function(){
+				/**
+				 * 获取所有的元素
+				 * */
+				var btnPrev = document.getElementById("btn_prev"); //左按钮
+				var btnNext = document.getElementById("btn_next"); //右按钮
+				
+				var markLeft = document.getElementById("mark_left"); //左区域
+				var markRight = document.getElementById("mark_right"); //右区域
+				
+				
+				
+				//按钮区域的划入划出事件
+				btnPrev.onmouseover=markLeft.onmouseover=function(){
+					startMove(btnPrev,{opacity:100});
+				};
+				btnPrev.onmouseout=markLeft.onmouseout=function(){
+					startMove(btnPrev,{opacity:0});
+				};
+				btnNext.onmouseover=markRight.onmouseover = function(){
+					startMove(btnNext,{opacity:100});
+				};
+				btnNext.onmouseout=markRight.onmouseout = function(){
+					startMove(btnNext,{opacity:0});
+				};
+				
+				var smallLis = document.getElementById("small_pic").getElementsByTagName("li");
+				var bigLis = document.getElementById("big_pic").getElementsByTagName("li");
+				var smallUL = document.getElementById("small_UL");
+				
+				//给smallUL的宽度赋值
+				smallUL.style.width = smallLis[0].offsetWidth*smallLis.length + "px";
+				
+				for(var i=0; i<smallLis.length; i++) {
+					smallLis[i].index = i; //给每一个缩略图加index属性
+					smallLis[i].onmouseover = function(){
+						startMove(this,{opacity:100});
+					};
+					smallLis[i].onmouseout = function(){
+						if(this.index == currentImgIndex) return;
+						startMove(this,{opacity:50});
+					};
+					
+					smallLis[i].onclick = function(){
+						currentImgIndex = this.index;
+						//切换图片
+						tabImg();
+					};
+				}
+				
+				btnPrev.onclick = function(){
+					currentImgIndex--;
+					if(currentImgIndex < 0) {
+						currentImgIndex = smallLis.length-1;
+					}
+					//切换图片
+					tabImg();
+				};
+				btnNext.onclick = function(){
+					currentImgIndex++;
+					if(currentImgIndex > (smallLis.length-1)) {
+						currentImgIndex = 0;
+					}
+					//切换图片
+					tabImg();
+				};
+				
+				function tabImg(){
+					//根据currentImgIndex 来决定切到哪张图片显示
+					//显示大图
+					bigLis[currentImgIndex].style["z-index"] = ++maxZindex;
+					
+					for(var i=0; i<smallLis.length; i++) {
+						startMove(smallLis[i],{opacity:50});
+					}
+					startMove(smallLis[currentImgIndex], {opacity:100});
+					
+					//移动缩略图
+					if(currentImgIndex == 0){
+						startMove(smallUL, {left:0});
+					} else if(currentImgIndex == (smallLis.length-1)){
+						startMove(smallUL, {left:-(smallLis.length-3)*smallLis[0].offsetWidth});
+					} else {
+						startMove(smallUL, {left:-(currentImgIndex-1)*smallLis[0].offsetWidth});
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="playimages" class="play">
+			<ul id="big_pic" class="big_pic">
+				<div id="btn_prev" class="prev"></div>
+				<div id="btn_next" class="next"></div>
+
+				<a id="mark_left" class="mark_left" href="javascript:;"></a>
+				<a id="mark_right" class="mark_right" href="javascript:;"></a>
+
+				<li style="z-index:1;"><img src="images/1.jpg" /></li>
+				<li><img src="images/2.jpg" /></li>
+				<li><img src="images/3.jpg" /></li>
+				<li><img src="images/4.jpg" /></li>
+				<li><img src="images/5.jpg" /></li>
+				<li><img src="images/6.jpg" /></li>
+			</ul>
+			<div id="small_pic" class="small_pic">
+				<ul id="small_UL" style="width:390px;">
+					<li style="filter: 100; opacity: 1;"><img src="images/1.jpg" /></li>
+					<li><img src="images/2.jpg" /></li>
+					<li><img src="images/3.jpg" /></li>
+					<li><img src="images/4.jpg" /></li>
+					<li><img src="images/5.jpg" /></li>
+					<li><img src="images/6.jpg" /></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

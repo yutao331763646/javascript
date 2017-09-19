@@ -1,0 +1,41 @@
+<!DOCTYPE>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<title>苹果菜单</title>
+<style type="text/css">
+body {margin:0px;}
+#div1 {text-align:center; position:absolute; bottom:0px;  width:800px; margin:0 auto;}
+#div1 img {border:none;}
+#div1 .box {display:block; width:400px; margin:0 auto; border-bottom:dotted 1px black; text-decoration:none; color:#333;}
+#div1 .box:hover {border-bottom:solid 1px black;}
+
+</style>
+<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" >
+	onload = function(){
+		var imgs = document.getElementsByTagName("img");
+		imgs = Array.from(imgs);
+		document.addEventListener("mousemove", function(e){
+			var mouse = {x:e.clientX, y:e.clientY};
+			imgs.forEach(function(item,index){
+				var distance = Math.sqrt( Math.pow(mouse.x-offsetPage(item).left-item.offsetWidth/2,2) + 
+				Math.pow(mouse.y-offsetPage(item).top-item.offsetHeight/2,2) );
+				item.style.width = Math.max(64 ,200 - distance)+"px";
+			});
+		})
+	}
+</script>
+</head>
+
+	<body>
+		<div id="div1">
+			<a href="#"><img src="images/1.png" width="64"  /></a>
+			<a href="#"><img src="images/2.png" width="64" /></a>
+			<a href="#"><img src="images/3.png" width="64"  /></a>
+			<a href="#"><img src="images/4.png" width="64" /></a>
+			<a href="#"><img src="images/5.png" width="64" /></a>
+		</div>
+	</body>
+</html>

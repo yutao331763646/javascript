@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="">
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			html, body {
+				width: 100%;
+				height: 100%;
+			}
+			#box {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			#scroll {
+				width: 6px;
+				height: 96%;
+				position: fixed;
+				top: 2%;
+				right: 5px;
+				border-radius: 3px;
+				background-color: rgba(235, 233, 233, 0.5);
+				z-index: 9998;
+			}
+			#scrollBar {
+				position: absolute;
+				z-index: 9999;
+				width: 6px;
+				height: 20px;
+				border-radius: 3px;
+				left: 0;
+				top: 0;
+				background-color: #383838;
+				cursor: pointer;
+			}
+			.container {
+				margin-top: 50px;
+			}
+			.item {
+				width: 100%;
+				height: 120px;
+				padding: 5px;
+				margin: 10px 0px;
+				border-radius: 4px;
+				text-align: center;
+				background: #C0C8C9;
+			}
+			.jumbotron {
+				margin-bottom: 0;
+			}
+		</style>
+	</head>
+
+	<body style="overflow:hidden;">
+		<div id="box">
+			<div id="content">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="page-header">
+								<h1>基本效果演示 <small>animate.css</small></h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">bounce效果</p>
+								<button class="btn btn-ms btn-primary" effect="bounce">跳动</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">flash效果</p>
+								<button class="btn btn-primary" effect="flash">闪烁</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">pulse效果</p>
+								<button class="btn btn-primary" effect="pulse">放大</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rubberBand效果</p>
+								<button class="btn btn-primary" effect="rubberBand">皮筋</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">shake效果</p>
+								<button class="btn btn-primary" effect="shake">抖动</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">swing效果</p>
+								<button class="btn btn-primary" effect="swing">摇摆</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">tada效果</p>
+								<button class="btn btn-primary" effect="tada">惊讶</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">wobble效果</p>
+								<button class="btn btn-primary" effect="wobble">摇晃</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="page-header">
+								<h1>Bounce效果演示 <small>animate.css</small></h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">bounceIn效果</p>
+								<button class="btn btn-primary" effect="bounceIn">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">bounceInDown效果</p>
+								<button class="btn btn-primary" effect="bounceInDown">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">bounceInLeft效果</p>
+								<button class="btn btn-primary" effect="bounceInLeft">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">bounceInRight效果</p>
+								<button class="btn btn-primary" effect="bounceInRight">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">bounceInUp效果</p>
+								<button class="btn btn-primary" effect="bounceInUp">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">bounceOut效果</p>
+								<button class="btn btn-primary" effect="bounceOut">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">bounceOutDown效果</p>
+								<button class="btn btn-primary" effect="bounceOutDown">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">bounceOutLeft效果</p>
+								<button class="btn btn-primary" effect="bounceOutLeft">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">bounceOutRight效果</p>
+								<button class="btn btn-primary" effect="bounceOutRight">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">bounceOutUp效果</p>
+								<button class="btn btn-primary" effect="bounceOutUp">执行一下</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="page-header">
+								<h1>Fading效果演示 <small>animate.css</small></h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">fadeIn效果</p>
+								<button class="btn btn-primary" effect="fadeIn">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">fadeInDown效果</p>
+								<button class="btn btn-primary" effect="fadeInDown">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">fadeInLeft效果</p>
+								<button class="btn btn-primary" effect="fadeInLeft">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">fadeInRight效果</p>
+								<button class="btn btn-primary" effect="fadeInRight">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">fadeInUp效果</p>
+								<button class="btn btn-primary" effect="fadeInUp">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">fadeOut效果</p>
+								<button class="btn btn-primary" effect="fadeOut">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">fadeOutDown效果</p>
+								<button class="btn btn-primary" effect="fadeOutDown">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">fadeOutLeft效果</p>
+								<button class="btn btn-primary" effect="fadeOutLeft">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">fadeOutRight效果</p>
+								<button class="btn btn-primary" effect="fadeOutRight">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">fadeOutUp效果</p>
+								<button class="btn btn-primary" effect="fadeOutUp">执行一下</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="page-header">
+								<h1>Flippers效果演示 <small>animate.css</small></h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">flip效果</p>
+								<button class="btn btn-primary" effect="flip">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">flipInX效果</p>
+								<button class="btn btn-primary" effect="flipInX">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">flipInY效果</p>
+								<button class="btn btn-primary" effect="flipInY">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">flipOutX效果</p>
+								<button class="btn btn-primary" effect="flipOutX">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">flipOutY效果</p>
+								<button class="btn btn-primary" effect="flipOutY">执行一下</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="page-header">
+								<h1>LightSpeed效果演示 <small>animate.css</small></h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">lightSpeedIn效果</p>
+								<button class="btn btn-primary" effect="lightSpeedIn">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">lightSpeedOut效果</p>
+								<button class="btn btn-primary" effect="lightSpeedOut">执行一下</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="page-header">
+								<h1>Rotating效果演示 <small>animate.css</small></h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rotateIn效果</p>
+								<button class="btn btn-primary" effect="rotateIn">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rotateOut效果</p>
+								<button class="btn btn-primary" effect="rotateOut">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rotateInDownLeft效果</p>
+								<button class="btn btn-primary" effect="rotateInDownLeft">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rotateInDownRight效果</p>
+								<button class="btn btn-primary" effect="rotateInDownRight">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rotateInUpLeft效果</p>
+								<button class="btn btn-primary" effect="rotateInUpLeft">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rotateInUpRight效果</p>
+								<button class="btn btn-primary" effect="rotateInUpRight">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rotateOutDownLeft效果</p>
+								<button class="btn btn-primary" effect="rotateOutDownLeft">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rotateOutDownRight效果</p>
+								<button class="btn btn-primary" effect="rotateOutDownRight">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rotateOutUpLeft效果</p>
+								<button class="btn btn-primary" effect="rotateOutUpLeft">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rotateOutUpRight效果</p>
+								<button class="btn btn-primary" effect="rotateOutUpRight">执行一下</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="page-header">
+								<h1>Specials效果演示 <small>animate.css</small></h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">hinge效果</p>
+								<button class="btn btn-primary" effect="hinge">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rollIn效果</p>
+								<button class="btn btn-primary" effect="rollIn">执行一下</button>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="item">
+								<p class="lead">rollOut效果</p>
+								<button class="btn btn-primary" effect="rollOut">执行一下</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<button id="back2Top" type="button" class="btn visible-lg btn-lg btn-success" style="position: fixed; right:50px; bottom: 50px;"><div>回到</div><div>顶部</div></button>
+				<button id="back2Top" type="button" class="btn visible-md btn-md btn-success" style="position: fixed; right:50px; bottom: 50px;"><div>回到</div><div>顶部</div></button>
+				<button id="back2Top" type="button" class="btn visible-sm btn-sm btn-success" style="position: fixed; right:50px; bottom: 50px;"><div>回到</div><div>顶部</div></button>
+				<button id="back2Top" type="button" class="btn visible-xs btn-xs btn-success" style="position: fixed; right:50px; bottom: 50px;"><div>回到</div><div>顶部</div></button>
+				
+				<div class="jumbotron">
+					<div class="container">
+						<h3><span class="label label-default">AnimateCSS</span></h3>
+						<h3><span class="label label-default">AnimateCSS</span></h3>
+						<h3><span class="label label-default">页面底部</span></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="scroll">
+			<div id="scrollBar"></div>
+		</div>
+	</body>
+
+</html>
+<script src="js/draggable.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	
+	
+	
+	onload = function(){
+		var scrollWrap = document.getElementById("scroll");
+		var scrollBar = document.getElementById("scrollBar");
+		
+		var box = document.getElementById("box");
+		var content = document.getElementById("content");
+		
+		init();//初始化，计算相应的height和top
+		
+		draggable(scrollBar, {x:false, callback:function(section, distance){
+			console.log(section);
+			box.scrollTop = content.offsetHeight*distance.y/(window.innerHeight*0.96);
+		}});
+		
+		box.addEventListener("mousewheel",function(e){ //非FireFox
+			if(e.wheelDelta >= 120) {//向上
+				box.scrollTop -= 50;
+			} 
+			if(e.wheelDelta <= -120) {//向下
+				box.scrollTop += 50;
+			}
+			scrollBar.style.top = window.innerHeight*0.96*box.scrollTop/content.offsetHeight+"px";
+		});
+		box.addEventListener("DOMMouseScroll", function(e){ //FireFox
+			if(e.detail <= -3) {//向上
+				box.scrollTop -= 50;
+			} 
+			if(e.detail >= 3) {//向下
+				box.scrollTop += 50;
+			}
+			scrollBar.style.top = window.innerHeight*box.scrollTop/content.offsetHeight+"px";
+		})
+		
+		function init(){
+			//重新计算scrollBar的高度和位置
+			scrollBar.style.height =  window.innerHeight*window.innerHeight*0.96/content.offsetHeight + "px";
+			scrollBar.style.top = window.innerHeight*0.96*box.scrollTop/content.offsetHeight+"px";
+			//重新计算整个滚动区间的高度和位置
+			scrollWrap.style.height = window.innerHeight*0.96+"px";
+			scrollWrap.style.top = window.innerHeight*0.02+"px";
+		}
+		window.onresize = function(){
+			init();
+		}
+	}
+</script>

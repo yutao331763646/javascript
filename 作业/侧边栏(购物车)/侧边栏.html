@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.maxicon{
+				width: 35px;
+				font: normal 12px/18px "microsoft yahei";
+				z-index: 9999;
+				position: fixed;
+				top: 0;
+				right: 0;
+				height: 100%;
+				background: #000;
+			}
+			.maxTitem{
+				position: absolute;
+				top: 100px;
+			}
+			.maxicon .icon{
+				z-index: 10;
+				position: relative;
+				width: 35px;
+				height: 40px;
+				display: block;
+			}
+			.maxicon .icon3{
+				height:100px;
+				position: relative;
+				z-index: 99;
+				background: #000;	
+			}
+			.maxicon .icon .iconname{
+				background: #dc4f45;
+				position: absolute;
+				bottom: 0;
+				right: -100px;
+				width: 90px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				color: #fff;
+				font-size: 13px;
+				border-radius: 20px 0 0 20px;
+			}
+			.maxicon .icon .iconsaoma{
+				position: absolute;
+				bottom: 0;
+				right:35px;
+				width:80px;
+				height:80px;display: none;
+			}
+			.maxicon .iconhot{
+				display: block;
+				width: 35px;
+				height: 40px;
+				background:#000 url(images/ico.png) no-repeat;
+				z-index: 99;
+				position: relative;
+			}
+			.maxicon .icon3 .icongouwu{
+				color: #fff;
+				display: block;
+				width: 18px;
+				padding: 0 8px;
+				line-height: 14px;
+				margin: 0 auto;
+				text-align: center;
+				background: #000;
+				z-index: 100;
+				position: relative;
+			}
+			.maxicon .icon3 .icongouwu .number{
+				display: block;
+				width: 18px;
+				height: 18px;
+				margin-top: 5px;
+				line-height: 18px;
+				background: #dc4f45;
+				border-radius: 50%;
+			}
+
+
+			.maxBitem{
+				position: absolute;
+				bottom: 50px;
+				background: #000;
+				z-index: 100;
+			}
+
+			.maxicon .icon2 .iconhot{background-position: 0 -45px;}
+			.maxicon .icon3 .iconhot{background-position: 0 -136px;}
+			.maxicon .icon4 .iconhot{background-position: 0 -181px;}
+			.maxicon .icon5 .iconhot{background-position: 0 -269px;}
+			.maxicon .icon6 .iconhot{background-position: 0 -312px;}
+			.maxicon .icon7 .iconhot{background-position: 0 -358px;}
+			.pop{
+				position: fixed;
+				z-index: 1005;
+				right: -400px;
+				top: 0;
+				width: 277px;
+				border: 1px solid #ddd;
+				background-color: #fff;
+				height: 100%;
+				box-shadow: 0 0 5px rgba(0,0,0,.4);
+				border-radius: 5px 0 0 5px;
+			}
+			.pop .guanbi1{
+				position: absolute;
+				top: 6px;
+				right: 6px;
+				width: 20px;
+				height: 20px;
+				background: url(images/main.png) no-repeat right top;
+				cursor: pointer;
+			}
+			.pop h2{
+				font-size: 14px;
+				margin-bottom: 10px;
+				padding: 5px 0 0 20px;
+				border-bottom: 1px solid #ddd;
+				line-height: 26px;
+			}
+			.pop .kong{
+				margin-top: 30px;
+				height:70%;
+				background: url(images/cartbg.gif) no-repeat center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="maxicon">
+			<div class="maxTitem">
+				<a href="#" class="icon icon1"><span class="iconname">我的订单</span><i class="iconhot"></i></a>
+				<a href="#" class="icon icon2"><span class="iconname">全天派送</span><i class="iconhot"></i></a>
+				<div class="icon icon3">
+					<span class="iconname">购物车</span>
+					<i class="iconhot"></i>
+					<a href="#" class="icongouwu">购物车<span class="number">0</span></a>				
+				</div>
+			</div>
+			<div class="maxBitem">
+				<a href="#" class="icon icon4"><span class="iconname">优惠折扣</span><i class="iconhot"></i></a>
+				<a href="#" class="icon icon5">
+					<div class="iconsaoma">
+						<img src="images/code.jpg" width="80px" height="80px">
+					</div>
+					<i class="iconhot"></i>
+				</a>
+				<a href="#" class="icon icon6"><span class="iconname">400-606-7757</span><i class="iconhot"></i></a>
+				<a href="#" class="icon icon7"><span class="iconname">返回顶部</span><i class="iconhot"></i></a>
+			</div>
+		</div>
+		<div class="pop">
+			<div class="guanbi1"></div>
+			<h2>购物车</h2>
+			<div class="kong">
+				<div class=""></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript">
+			$(".maxicon .icon").hover(function(){
+				$(this).find(".iconname").animate({"right":"35px"},500);
+				$(this).find(".iconsaoma").css("display","block");
+			},function(){
+				$(this).find(".iconname").animate({"right":"-100px"},500);
+				$(this).find(".iconsaoma").css("display","none");
+			})
+			$(".icon7").click(function(){
+				$("body").animate({"scrollTop":0},700);
+			})
+			$(".icon3").click(function(){
+				$(".pop").animate({"right":"35px"},500);
+			})
+			$(".guanbi1").click(function(){
+				$(".pop").animate({"right":"-400px"},500);
+			})
+		</script>
+	</body>
+</html>

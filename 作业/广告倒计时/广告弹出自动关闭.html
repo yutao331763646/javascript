@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>广告自动关闭</title>	
+	</head>
+	<style>
+		.tip{
+			margin: 10px auto;
+			height: 80px;
+			background: url('ad.jpg');
+			position: relative;
+		}
+		.tip a {
+			display: block;
+			width: 20px; height: 20px;
+			border-radius: 50%;
+			background: rgba(0,0,0,0.5);
+			text-align: center; line-height: 20px;
+			font-size: 16px; color: white;
+			right: 10px;
+			top: 5px;
+			position: absolute;
+		}
+	</style>
+	<script>
+		onload = function(){
+		
+			//获取#ad，#sec两个元素
+			var oAD = document.getElementById("ad");
+			var oSpan = document.getElementById("sec");
+			
+			//开启一个定时器
+			var timer = setInterval(function(){
+				//修改span的数字，递减
+				oSpan.innerHTML -= 1;
+				//当数字为0
+				if(oSpan.innerHTML == 0) {
+					//广告消失
+					oAD.style.display = "none";
+					//定时器销毁
+					clearInterval(timer);
+				}
+			},1000);
+		
+		/*
+			var ad = document.获取("ad");
+			var span = document.获取("sec");
+			
+			var t = 定时器(
+				span.内容 -= 1;
+				if(内容==0){
+					ad消失
+					关闭t
+				}
+			)
+		*/
+		}
+	</script>
+	<body>
+		<div id="ad" class="tip">
+			<a><span id="sec">5</span>S</a>
+		</div>
+	</body>
+</html>

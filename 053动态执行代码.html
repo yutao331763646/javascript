@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <body>
+        <textarea rows="10" cols="60" id="code">
+        </textarea>
+        <br>
+        <button id="exec">执行</button>
+     </body>
+</html>
+<script type="text/javascript">
+	var x = 100;
+	function test(){
+		setTimeout(function(){
+			console.log(this);
+		}, 2000);
+		//console.log(this);
+		//window.setInterval("alert(x);",3000);	
+	}
+	window.test();
+	
+	
+	/*
+	window.setInterval(test,1000);
+	window.setInterval(function(){
+		
+	},1000);
+	*/
+</script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>DOM操作</title>	
+	</head>
+	<style>
+		
+	</style>
+	<script src="js/common.js"></script>
+	<body>
+		<div id="big" style="position:absolute; width:400px; height:400px; background: #cdf">
+			<div id="small" style="position:absolute; left:100px; top:100px; width:200px; height:200px; background: blue"></div>
+		</div>
+		
+		<script>
+			/*//
+			window.addEventListener("click", function(){
+				alert("window");
+			}, true);
+			document.addEventListener("click", function(){
+				alert("document---捕获");
+			}, true);
+			document.addEventListener("click", function(){
+				alert("document---冒泡");
+			}, false);
+			
+			small.addEventListener("click", function(){
+				alert("small--捕获");
+			}, true);
+			small.addEventListener("click", function(){
+				alert("small--冒泡");
+			}, false);
+			
+			big.addEventListener("click", function(){
+				alert("big");
+			}, false);*/
+			
+			/*small.attachEvent("onclick", function(){
+				alert("small01");
+			});
+			small.attachEvent("onclick", function(){
+				alert("small02");
+			});
+			small.attachEvent("onclick", function(){
+				alert("small03");
+			});*/
+			
+			small.addEventListener("mouseenter", function(){
+				console.log("enter--small--捕获");
+			},true)
+			small.addEventListener("mouseenter", function(){
+				console.log("enter--small--冒泡");
+			})
+			big.addEventListener("mouseenter", function(){
+				console.log("enter--big--捕获");
+			},true)
+			big.addEventListener("mouseenter", function(){
+				console.log("enter--big--冒泡");
+			})
+		</script>
+	</body>
+	
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

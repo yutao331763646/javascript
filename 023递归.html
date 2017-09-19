@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+			//函数调用函数自身
+			function m1(){
+				var x = 10;
+				console.log(x++);
+				m1();
+			}
+			
+			//m1();
+			
+			//计算100！
+			
+			/*
+			100! === 100*99*98*97*96....*1
+					 100*99!
+			99! ==== 99*98!
+			f(x) = x*f(x-1);
+			*/
+			function f(x){
+				if(x==1) {
+					return 1;
+				}
+				return x*f(x-1);
+			}
+			
+			console.log( f(10) );
+			
+			
+			
+			//斐波那契数列
+			//1 1 2  3  5  8  13  21  34  55
+			//f(x) = f(x-1) + f(x-2);  x>2
+			
+			function f(x) {
+				if(x<3) {
+					return 1;
+				}
+				return f(x-1) + f(x-2);
+			}
+			//console.log(f(10))
+			
+			//最大公约数
+			//辗转相除法
+			function func(m,n){
+				var r = m%n;
+				m = n;
+				n = r;
+				if(r==0) {
+					return m;
+				} else {
+					return func(m,n);
+				}
+			}
+			
+			//更相减损法
+			function func(x,y){
+				if(x%2==0 && y%2==0) {
+					return 2*func(x/2, y/2);
+				} else {
+					var min = x>y?y:x;
+					var max = x>y?x:y;
+					
+					var cha = max-min;
+					if(cha==min) {
+						return cha;
+					} else {
+						return func(cha,min);
+					}
+				}
+			}
+			
+			console.log( func(12,18) );
+		</script>
+    </head>
+    <body>	
+		
+    </body>
+</html>
+

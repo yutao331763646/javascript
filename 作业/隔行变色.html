@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+.red{background:red;}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var oUL = document.getElementById("list");
+	var lilist = oUL.childNodes;
+	
+	/*
+	lilist = textNodeFilter(lilist);
+	lilist.forEach(function(val,index){
+		if(index%2){
+			val.style.background = "green";
+		}
+	});
+	*/
+	
+	lilist = oUL.children;
+	
+	console.log(lilist.length);
+}
+
+function textNodeFilter(list){
+	var temp = [];
+	for(var i=0; i<list.length; i++){
+		if(list[i].nodeType == 1){
+			temp.push(list[i]);
+		}
+	}
+	return temp;
+}
+
+</script>
+</head>
+
+<body>
+<ul id="list">
+	<li>A</li>
+	<li>B</li>
+	<li>C</li>
+	<li>D</li>
+	<li>E</li>
+	<li>F</li>
+</ul>
+</body>
+</html>

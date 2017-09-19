@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<div id="box" style="width: 50px; height: 50px; background: black; position: absolute; left: 400px; top: 400px; border-radius: 50%;">
+			
+		</div>
+		
+		<div style="height: 1px; width: 100%; background: black; position: absolute; left: 0; top: 425px;">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		var ball = document.getElementById("box");
+		
+		/*var deg = 0;
+		var t = setInterval(function(){
+			
+			ball.style.left = 700*Math.sin(deg*Math.PI/180) + "px";
+			deg+=3;
+			if(deg>90) {
+				clearInterval(t);
+			}
+		}, 30);
+		*/
+		
+		//animate(ball, {x: 800, y: 300, opacity: 80, width: 500, height: 100}, 1000);
+		
+		function animate(obj, target, time){
+			var deg = 0;
+			var rangex = target.x - obj.offsetLeft;
+			var rangey = target.y - obj.offsetTop;
+			
+			var startPoint = {
+				x : obj.offsetLeft,
+				y : obj.offsetTop
+			}
+			var t = setInterval(function(){
+				obj.style.left = startPoint.x + rangex*Math.sin(deg*Math.PI/180) + "px";
+				obj.style.top = startPoint.y + rangey*Math.sin(deg*Math.PI/180) + "px";
+				deg += 3;
+				if(deg>90) {
+					clearInterval(t);
+				}
+			}, time/30);
+		}
+		
+	</script>
+</html>

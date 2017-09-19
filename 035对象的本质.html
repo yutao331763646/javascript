@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+			var obj = new Object();
+			var obj2 = {
+				name : "123"
+			};
+			var computer = {
+				cpu : "E730",
+				mem : "3G",
+				price : 5000,
+				color : "black",
+				keyboard : [ {color:"red", text: "A", jixie: true}, {color:"red", text: "A", jixie: true}],
+				playgame : function(){
+				}
+			};
+			var clazz = {
+				sex : "女",
+				students : [
+					{
+						name: "zhangsan",
+						sex : "男",
+						introduce : function(yu){
+							//我的
+							console.log("我叫"+yu+",性别:"+this.sex)
+						},
+						study : function(){
+						},
+						exam : function(){
+						}
+					},
+					{
+						name: "lisi",
+						sex : "男",
+						introduce : function(){
+							console.log("我叫"+name+",性别:"+sex)
+						},
+						study : function(){
+
+						},
+						exam : function(){
+
+						}
+					},
+					{
+						name: "wangwu",
+						sex : "男",
+						introduce : function(){
+							console.log("我叫"+name+",性别:"+sex)
+						},
+						study : function(){
+
+						},
+						exam : function(){
+
+						}
+					}
+				]
+			}
+
+			clazz.students[0].introduce('yutao');
+
+			var feiqiu = {
+				login : function(){
+
+				},
+				userCenter : {
+					username : "xxx",
+					groupname : "xxx",
+					avatar : 'xxxx'
+				},
+				createGroup : function(){
+				},
+				share : function(){
+				}
+			}
+			
+		</script>
+    </head>
+    <body>	
+		
+    </body>
+</html>
+

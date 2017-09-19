@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<div id="box" style="width: 50px; height: 50px; background: black; position: absolute; left: 400px; top: 400px; border-radius: 50%;"></div>
+		<div style="height: 1px; width: 100%; background: black; position: absolute; left: 0; top: 425px;"></div>
+	</body>
+	<script type="text/javascript">
+		var ball = document.getElementById("box");
+		animate(ball, {left: 800, top: 300, opacity: 20, width: 300, height: 300}, 1000);
+		function animate(obj, attrs, time){
+			var deg = 0;
+			//如何关掉上一次的定时器？
+			clearInterval(obj.t);
+			var _obj = {};
+			for(var attr in attrs) {
+				if(attr == "opacity") {
+					_obj[attr] = getStyle(obj,attr)*100;
+				} else {
+					_obj[attr] = getStyle(obj,attr);
+				}
+			}
+			console.log(_obj);
+			obj.t = setInterval(function(){
+				for(var attr in attrs) {
+					if(attr == "opacity") {
+						obj.style[attr] = (_obj[attr] + (attrs[attr]-_obj[attr])*Math.sin(deg*Math.PI/180))/100;
+					} else {
+						obj.style[attr] = _obj[attr] + (attrs[attr]-_obj[attr])*Math.sin(deg*Math.PI/180) + "px";
+					}
+				}
+				deg++;
+				if(deg>90) {
+					clearInterval(obj.t);
+				}
+			},time/90);
+		}
+		function getStyle(obj, attr){
+			if(obj.currentStyle) {
+				return parseInt(obj.currentStyle[attr]);
+			} else {
+				return parseInt(getComputedStyle(obj)[attr]);
+			}
+		}
+	</script>
+</html>

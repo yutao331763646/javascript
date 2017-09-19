@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+			//编写一个函数，计算两个数字的和差积商
+			function cal(p1, p2, sign){
+				p1 = Number(p1);
+				p2 = Number(p2);
+				sign = Number(sign);
+				
+				switch(sign) {
+					case 1 : return p1+p2;
+					case 2 : return p1-p2; 
+					case 3 : return p1*p2; 
+					case 4 : return p1/p2; 
+				}
+				
+			}
+			
+			function test(){
+			
+				var result = cal(number01.value, number02.value, sg.value);
+				console.log(result);
+				
+			}
+			
+		</script>
+    </head>
+    <body>	
+		<input id="number01" type="text"/>
+		<input id="number02" type="text"/>
+		<select id="sg">
+			<option value="1">加法</option>
+			<option value="2">减法</option>
+			<option value="3">乘法</option>
+			<option value="4">除法</option>
+		</select>
+		<button onclick="test()">计算</button>
+    </body>
+</html>
+

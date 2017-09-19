@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0035)http://fgm.cc/learn/lesson2/05.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>函数传参，改变Div任意属性的值</title>
+<style>
+body,p{margin:0;padding:0;}
+body{color:#333;font:12px/1.5 Tahoma;padding-top:10px;}
+#outer{width:300px;margin:0 auto;}
+p{margin-bottom:10px;}
+button{margin-right:5px;}
+label{width:5em;display:inline-block;text-align:right;}
+input{padding:3px;font-family:inherit;border:1px solid #ccc;}
+#div1{color:#fff;width:180px;height:180px;background:#000;margin:0 auto;padding:10px;}
+</style>
+<script>
+	onload = function(){
+		var btns = document.getElementById("outer").getElementsByTagName("button");
+		var inpts = document.getElementById("outer").getElementsByTagName("input");
+		
+		
+		//console.log(btns);
+		btns[0].onclick = function(){
+			var box = document.getElementById("div1");
+			var propname = inpts[0].value;
+			var propvalue = inpts[1].value;
+			box.style[propname] = propvalue;
+		}
+		btns[1].onclick = function(){
+			inpts[0].value = inpts[1].value = "";
+			var newbox = document.createElement("div");
+			newbox.id = "div1";
+			var box = document.getElementById("div1")
+			newbox.innerHTML = box.innerHTML;
+			box.remove();
+			document.body.appendChild(newbox);
+		}
+	}
+	
+	
+</script>
+</head>
+<body>
+<div id="outer">
+    <p><label>属性名：</label><input type="text" value="background"></p>
+    <p><label>属性值：</label><input type="text" value="blue"></p>
+    <p><label></label><button>确定</button><button>重置</button></p>
+</div>
+
+<div id="div1">在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果。</div>
+
+
+</body></html>

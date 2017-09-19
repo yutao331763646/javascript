@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+		
+			function cal(){
+				var da = Number(num01.value);
+				console.log(da);
+				
+				var year = parseInt(da/10000);  //年份
+				var month = parseInt(da/100)%100;  //月份
+ 				var day = da%100; //日期
+				
+				var total = 0;
+				
+				switch(month) {
+					case 12 :  total += 30;  //11月天数
+					case 11 :  total += 31;  //10月份天数
+					case 10 :  total += 30;
+					case 9 :  total += 31;
+					case 8 :  total += 31;
+					case 7 :  total += 30;
+					case 6 :  total += 31;
+					case 5 :  total += 30;
+					case 4 :  total += 31;
+					case 3 :  total += 28;
+					case 2 :  total += 31;
+					case 1 :  total += day;
+				}
+				
+				res.value = total;
+			}
+		</script>
+    </head>
+    <body>	
+		请输入日期
+		<input id="num01" type="text"/> 
+		<button onclick="cal()">计算</button> <br>
+		
+		计算结果：<input id="res" type="text"/>
+    </body>
+</html>
+

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+			//求100-999之间的水仙花数。abc = a^3 + b^3 + c^3
+			for(var i=100; i<=999; i++){
+				var a = parseInt(i/100);
+				var b = parseInt(i/10)%10;
+				var c = i%10;
+				
+				if( i === (a*a*a+b*b*b+c*c*c) ){
+					//console.log(i);
+				}
+			}
+			
+			/*
+			《张丘建算经》 成书于公元 5  世纪， 作者是北魏人． 书中最后一道题堪称亮点， 通常也被称为 “ 百钱买百鸡 ” 问题，
+			民间则流传着县令考问神童的佳话书中原文如下：
+			今有鸡翁一， 值钱五； 鸡母一， 值钱三； 鸡雏三， 值钱一； 百钱买鸡百只， 问鸡翁、 母、雏各几何？
+			*/
+			
+			loop1: for(var x=0; x<=100; x++) { //鸡翁
+				for(var y=0; y<=100; y++) { //鸡母
+					for(var z=0; z<=100; z++) { //鸡雏
+						if(x*5 + y*3 + z/3 === 100 && (x+y+z)===100 ) {
+							console.log(x,y,z);
+							break loop1;
+						}
+					}
+				}
+			}
+			
+		</script>
+    </head>
+    <body>	
+		
+    </body>
+</html>
+

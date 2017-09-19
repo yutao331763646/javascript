@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+
+</style>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+	
+	var list = ["tony","hulk","peter","juli","hahah"];
+	var newlist = list.map(function(value, index, arr){
+		return value*100;
+	});
+	//log(newlist);
+	
+	/*
+	list.map = function(callback){
+		var _temp = [];
+		for(var i=0; i<this.length; i++){
+			_temp.push( callback(this[i], i, this) );
+		}
+		return _temp;
+	}
+	*/
+	
+	//返回true的保留，返回false过滤掉！
+	var newlist = list.filter(function(value, index, arr){
+		return value.indexOf("h") == 0;
+	});
+	
+	//log(newlist);
+	
+	
+	var result = ["yt","hr","wc","jk"].some(function(value, index, arr){
+		//判断数组中是否存在yt？
+		return value=="yintao";
+	})
+	
+	//console.log(result);
+	
+	
+	var result = ["a","b","c","d","e"].reduce(function(value1,value2, index, arr){
+		//将字符合并
+		return value1+value2;
+	});
+	log( result );
+	
+	
+</script>
+
+</head>
+
+<body>
+	<div id="box">回到顶部</div>
+</body>
+</html>

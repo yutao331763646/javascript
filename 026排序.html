@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+			var arr = [12,9,38,44,98,7,35,59,49,88,38];
+			var compare = function(x,y){
+				return x-y;
+			}
+			arr.sort(compare);
+			console.log(arr);
+			
+			function m1(f){
+				f();
+			}
+			
+			//回调函数（回头再调）, 当这个函数当成参数传递给另一个函数的时候
+			m1(function(){
+				console.log("ok");
+			});
+		</script>
+    </head>
+    <body>	
+		
+    </body>
+</html>
+

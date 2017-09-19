@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="style.css" type="text/css" rel="stylesheet" />
+<script  src="startMove.js"></script>
+<script type="text/javascript">
+function getByClass(oParent,sClass){
+	var aElm=document.getElementsByTagName('*');
+	var i=0;
+	var aResult=[]
+	for(i=0;i<aElm.length;i++){
+		if(aElm[i].className==sClass){
+			aResult.push(aElm[i])
+			}
+		}
+		return aResult;			
+	}
+
+window.onload=function(){
+	var oDiv=document.getElementById('playimages');
+	var oBthPrev=getByClass(oDiv,'prev')[0];
+	var oBtnNext=getByClass(oDiv,'next')[0];
+	var oMarkLeft=getByClass(oDiv,'mark_left')[0];
+	var oMarkRight=getByClass(oDiv,'mark_right')[0];
+	
+	var oSmallUl=getByClass(oDiv,'small_pic')[0].getElementsByTagName('ul')[0]
+	var aSmallLi=oSmallUl.getElementsByTagName('li');
+	var oBigUl=getByClass(oDiv,'big_pic')[0]
+	var aBigLi=oBigUl.getElementsByTagName('li')
+	var i=0
+	var iNow=0
+	var iMinZindex=2;
+	//小图预览UL的宽度 = 小图宽度 X 小图个数
+	oSmallUl.style.width=aSmallLi[0].offsetWidth*aSmallLi.length+'px';
+	
+	//左按钮 ,划入显示
+	oBthPrev.onmouseover=oMarkLeft.onmouseover=function(){
+		startMove(oBthPrev,{opacity:100})
+	}
+	//左按钮 ,划出隐藏
+	oBthPrev.onmouseout=oMarkLeft.onmouseout=function(){
+		startMove(oBthPrev,{opacity:0})
+	}
+	//右按钮 ,划入显示
+	oBtnNext.onmouseover=oMarkRight.onmouseover=function(){
+		startMove(oBtnNext,{opacity:100})
+	}
+	oBtnNext.onmouseout=oMarkRight.onmouseout=function(){
+		startMove(oBtnNext,{opacity:0})
+	}
+	
+	for(i=0;i<aSmallLi.length;i++){
+		aSmallLi[i].index=i
+		aSmallLi[i].onmouseover=function(){
+			startMove(this,{opacity:100})
+		}
+		aSmallLi[i].onmouseout=function(){
+			if(this.index!=iNow){
+				startMove(this,{opacity:60})
+			}
+		}
+		aSmallLi[i].onclick=function(){
+			if(iNow==this.index){return}
+			iNow=this.index
+			tab();//切换图片
+		}
+
+	}
+		
+	function tab(){ 
+		//将所有小图透明度降低
+		for(i=0;i<aSmallLi.length;i++){
+			startMove(aSmallLi[i],{opacity:50})
+		}
+		//将当前小图显示
+		startMove(aSmallLi[iNow],{opacity:100})
+		//当前大图z坐标提升
+		aBigLi[iNow].style.zIndex=iMinZindex++
+		
+		//aBigLi[iNow].style.height = oBigUl.offsetHeight+"px";
+		
+		if(iNow==0){
+			startMove(oSmallUl,{left:0})
+		} else if(iNow==aSmallLi.length-1){
+			startMove(oSmallUl,{left:-(iNow-2)*aSmallLi[0].offsetWidth});
+		} else{
+			startMove(oSmallUl,{left:-(iNow-1)*aSmallLi[0].offsetWidth});
+		}
+	}
+	oBthPrev.onclick=function () {
+		iNow--;
+		if(iNow==-1){//当前小于最小值
+			iNow=aSmallLi.length-1;//移至末尾
+		}
+		tab();
+	}
+		
+	oBtnNext.onclick=function (){
+		iNow++;
+		if(iNow==aSmallLi.length){//当前超过最大值
+			iNow=0;//归零
+		}
+		tab();
+	}
+
+}
+
+
+</script>
+</head>
+
+<body>
+<div id="playimages" class="play">
+    <ul class="big_pic">
+		<div class="prev"></div>
+		<div class="next"></div>
+
+		
+		<a class="mark_left" href="javascript:;"></a>
+		<a class="mark_right" href="javascript:;"></a>
+		
+		
+		<div class="bg">
+			<div class="text">加载图片说明……</div>
+			<div class="length">计算图片数量……</div>
+		</div>
+		
+        <li style="z-index:1;"><img src="images/1.jpg" /></li>
+        <li><img src="images/2.jpg" /></li>
+        <li><img src="images/3.jpg" /></li>
+        <li><img src="images/4.jpg" /></li>
+        <li><img src="images/5.jpg" /></li>
+        <li><img src="images/6.jpg" /></li>
+    </ul>
+    <div class="small_pic">
+        <ul style="width:390px;">
+            <li style="filter: 100; opacity: 1;"><img src="images/1.jpg" /></li>
+            <li><img src="images/2.jpg" /></li>
+            <li><img src="images/3.jpg" /></li>
+            <li><img src="images/4.jpg" /></li>
+            <li><img src="images/5.jpg" /></li>
+            <li><img src="images/6.jpg" /></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

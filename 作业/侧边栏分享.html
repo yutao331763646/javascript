@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+#div1{width:150px; height:100px; position:absolute; top:40%; left:-150px; background:#9CF;}
+#div1 span{width:20px; position:absolute; top:15px; left:150px; background:#9C9;}
+
+</style>
+<script src="../js/animate.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	onload = function(){
+		var oDiv = document.getElementById("div1");
+		oDiv.addEventListener("mouseover", function(){
+			clearInterval(oDiv.timer);
+			oDiv.timer = setInterval(function(){
+				this.style.left = this.offsetLeft + 2 + "px";
+				if(this.offsetLeft >= 0) {
+					clearInterval(this.timer);
+				}
+			}.bind(this), 30);
+		});
+		
+		oDiv.addEventListener("mouseout", function(){
+			clearInterval(oDiv.timer);
+			oDiv.timer = setInterval(function(){
+				this.style.left = this.offsetLeft - 2 + "px";
+				if(this.offsetLeft <= -150) {
+					clearInterval(this.timer);
+				}
+			}.bind(this),30);
+		})
+	}
+</script>
+</head>
+
+<body>
+<div id="div1"><span >分享到</span></div>
+</body>
+</html>
+ 

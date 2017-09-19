@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图片上下滑动</title>
+
+<style type="text/css">
+* { padding: 0; margin: 0; }
+li { list-style: none; }
+img { border: none; }
+body { background: #eee; }
+.slide_module { width: 120px; height: 400px; margin: 0 auto; background: #fff; border: 1px solid #ccc; position: relative; top: 50px; }
+.slide_module .up { width: 27px; height: 27px; background: url(images/up.gif) no-repeat; position: absolute; top: 4px; left: 50%; margin-left: -16px; cursor: pointer; filter: alpha(opacity: 60); opacity: 0.6; }
+.slide_module .down { width: 27px; height: 27px; background: url(images/down.gif) no-repeat; position: absolute; bottom: 4px; left: 50%; margin-left: -16px; cursor: pointer; filter: alpha(opacity: 60); opacity: 0.6; }
+.slide_module .wrap { width: 120px; height: 330px; position: absolute; top: 35px; left: 0; overflow: hidden; }
+.slide_module ul { width: 120px; position: absolute; top: 0; left: 0; }
+.slide_module li { width: 120px; height: 110px; float: left; }
+.slide_module a { display: block; width: 100px; height: 100px; border: 1px solid red; margin: 0 auto; position: relative; top: 4px; }
+.slide_module a:hover { border: 1px solid #333; }
+.slide_module .active { border: 10px solid #000; }
+</style>
+<script type="text/javascript">
+window.onload=function(){
+    moveSlide('moveSlide');
+};
+function moveSlide(id){
+    var obj=document.getElementById(id);
+    if(!obj)return;
+   
+   var aDiv=obj.getElementsByTagName('div');
+    var oUp=document.getElementsByClassName('up')[0];
+    var oDown=document.getElementsByClassName('down')[0];
+
+    var oUl=document.getElementsByTagName('ul')[0];
+    var oLi=oUl.getElementsByTagName('li');
+    var oTime=null;
+    var iTop=5;
+    
+    
+    oUp.onclick=function(){ autoPlay(-1); };
+    oDown.onclick=function(){ autoPlay(1); };
+        
+    function autoPlay(toggle){
+        if(oTime){
+            clearInterval(oTime);
+        }
+        oTime=setInterval(function(){
+            iTop+=2*toggle;
+            
+            if(iTop>0){
+                iTop=-oLi.length*oLi[0].offsetHeight/2;
+            }
+            if(iTop<-oLi.length*oLi[0].offsetHeight/2){
+                iTop=0;
+            }
+            oUl.style.top=iTop+'px';
+        }, 30);
+    }
+    autoPlay(toggle);
+    
+    
+}
+
+</script>
+</head>
+
+<body>
+
+<div class="slide_module" id="moveSlide">
+    <div class="up"></div>
+    <div class="wrap">
+        <ul>
+            <li><a href="http://www.chinamobile.com"><img src="images/1.jpg" alt="千锋教育"/></a></li>
+            <li><a href="http://www.chinamobile.com"><img src="images/4.jpg" alt="千锋教育"/></a></li>
+            <li><a href="http://www.chinamobile.com"><img src="images/1.jpg" alt="千锋教育"/></a></li>
+            <li><a href="http://www.chinamobile.com"><img src="images/1.jpg" alt="千锋教育"/></a></li>
+			<li><a href="http://www.chinamobile.com"><img src="images/4.jpg" alt="千锋教育"/></a></li>
+			<li><a href="http://www.chinamobile.com"><img src="images/1.jpg" alt="千锋教育"/></a></li>
+        </ul>
+    </div>
+    <div class="down"></div>
+</div>
+
+</body>
+</html>

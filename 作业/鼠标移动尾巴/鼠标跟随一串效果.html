@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>无标题文档</title>
+		<link href="css/font-awesome.css" rel="stylesheet">
+		<style type="text/css">
+		div{width:10px; height:10px; position:absolute; top:0; left:0;}
+		div::after{
+			font-family: fontawesome; content:"\f06c"; font-size: 18px; color:green;
+		}
+		</style>
+		<script src="common.js"></script>
+		<script type="text/javascript">
+			onload = function(){
+				var list = document.getElementsByTagName("div");
+				list = toarray(list);
+				document.onmousemove = function(ev){
+					var e = ev || event;
+					var last = list.pop();
+					last.style.left = e.clientX + "px";
+					last.style.top = e.clientY + "px";
+					list.unshift(last);
+				}
+			}
+		</script>
+	</head>
+<body>
+	<div style="left: 341px; top: 172px;"></div>
+	<div style="top: 172px; left: 341px;"></div>
+	<div style="top: 69px; left: 272px;"></div>
+	<div style="top: 69px; left: 272px;"></div>
+	<div style="top: 69px; left: 272px;"></div>
+	<div style="top: 75px; left: 275px;"></div>
+	<div style="top: 77px; left: 278px;"></div>
+	<div style="top: 81px; left: 281px;"></div>
+	<div style="top: 83px; left: 284px;"></div>
+	<div style="top: 86px; left: 291px;"></div>
+	<div style="top: 86px; left: 299px;"></div>
+</body></html>

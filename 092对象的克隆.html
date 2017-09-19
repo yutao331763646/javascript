@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+	<style type="text/css">
+		    body{
+			    background-color:rgb(177, 208,224); font: normal 12px Trebuchet MS; color:#000;
+		    }
+		    .roundedCorners{ 
+			    width:220px; padding:10px;
+			    background-color:#DDEEF6; 
+			    box-shadow: 0px 0px 10px 0px #888888;
+			    border:1px solid #DDEEF6;
+			    border-radius:6px;
+			    margin: auto;
+		    }
+		    .roundedCorners-textbox{ 
+				border:1px solid #999; width:160px;
+		    }
+			.checkbox {
+				margin-left: 30px;
+				border:1px solid #999; width:20px;
+			}
+	</style>
+</head>
+<script type="text/javascript" src="js/common.js" ></script>
+<script>
+	var stu = {
+		id:256,
+		name:"张三",
+		age : 30,
+		school : {
+			name : "清华",
+			addr : "北京",
+			level : "99",
+			studentscount : 30000
+		},
+		friends : [
+			{name: "小明"},
+			{name: "小凡"},
+			{name: "小峰"}
+		]
+	};
+
+	function copy(src) {
+		if(!(typeof src == "object") ) {
+			return
+		}
+		var dest = (src instanceof Array) ? [] : {};
+		for(var attr in src) {
+			if(typeof src[attr] == "object") {
+				dest[attr] = copy(src[attr]);
+			} else {
+				dest[attr] = src[attr];
+			}
+		}
+		return dest;
+	}
+	var newstu = copy(stu)
+	console.log( newstu );
+
+	stu.school.addr = "上海";
+	console.log( newstu );
+
+</script>
+<body>
+
+
+</body>
+</html>
+

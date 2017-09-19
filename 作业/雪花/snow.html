@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/snow.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box {
+            width: 1000px;
+            height: 600px;
+            background: #000000;
+            border: 5px solid red;
+            margin: 20px auto;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+   	/*setInterval(function(){
+   		var snow = document.createElement("img");
+   		snow.src = "img/snow.png";
+   		snow.style.width = Math.floor(Math.random()*46)+5 + "px";
+   		snow.style.position = "absolute";
+   		
+   		snow.style.top = 0;
+   		snow.style.left = Math.floor( Math.random()*(box.offsetWidth-parseInt(snow.style.width)) ) + "px";
+   		
+   		
+   		var speedx = -Math.random()*10-5;
+   		var speedy = Math.random()*15+5;
+   		var t = setInterval(function(){
+   			snow.style.left = snow.offsetLeft + speedx + "px";
+   			snow.style.top = snow.offsetTop + speedy + "px";
+   			if(snow.offsetLeft < -snow.offsetWidth || snow.offsetTop > box.offsetHeight) {
+   				snow.remove();
+   				clearInterval(t);
+   			}
+   		},30);
+   		box.appendChild(snow);
+   	},30);*/
+   	
+   	var engine = new Engine();
+   	engine.autoStart(50, function(){
+   		new Snow("img/snow.png").appendTo(box).init().fall("right");
+   	});
+   	
+   	function Engine(){
+   		this.autoStart = function(interval, cbk){
+   			this.timer = setInterval(function(){
+   				cbk();
+   			}, interval);
+   		}
+   		this.stop = function(){
+   			clearInterval(this.timer);
+   		}
+   	}
+   	
+   	function Snow(url) {
+   		this.element = document.createElement("img");
+   		this.init = function(){
+   			this.element.src = url;
+   			this.element.style.width = Math.floor(Math.random()*46)+5 + "px";
+   			this.element.style.position = "absolute";
+   			this.element.style.top = 0;
+   			this.element.style.left = Math.floor( Math.random()*(this.target.offsetWidth-parseInt(this.element.style.width)) ) + "px";
+   			this.speedx = Math.random()*10+5;
+   			this.speedy = Math.random()*15+5;
+   			return this;
+   		}
+   		this.appendTo = function(target){
+   			this.target = target;
+   			target.appendChild(this.element);
+   			return this;
+   		}
+   		this.fall = function(dir){
+   			this.timer = setInterval(function(){
+	   			this.element.style.left = this.element.offsetLeft + (dir=="left"?-this.speedx:this.speedx) + "px";
+	   			this.element.style.top = this.element.offsetTop + this.speedy + "px";
+	   			if(this.element.offsetLeft < -this.element.offsetWidth || this.element.offsetTop > this.target.offsetHeight) {
+	   				this.element.remove();
+	   				clearInterval(this.timer);
+	   			}
+	   		}.bind(this),30);
+   		}
+   	}
+   	
+   	function Money() {
+   		
+   	}
+</script>
+
+</html>

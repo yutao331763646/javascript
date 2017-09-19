@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+body{padding:0px; margin:0px; font-size:12px;}
+#ul1{width:800px; margin:0 auto; height:30px; line-height:30px;list-style:none; background:#CCC;}
+#ul1 li{float:left; width:100px; text-align:center;}
+#ul1 li a{text-decoration:none; display:block;}
+#ul1 li a:hover{background:#FCC;}
+#ul1 li div{display:none; background:#FCC; height:0;}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var lis = document.getElementsByTagName("li");
+	for(var i=0; i<lis.length; i++){
+		lis[i].onmouseover = function(){
+			this.getElementsByTagName("div")[0].style.display = "block";
+		};
+		lis[i].onmouseout = function(){
+			this.getElementsByTagName("div")[0].style.display = "none";
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+	<li>
+   		<a href="#">1111111</a>
+   		<div><a href="#">111111111</a><a href="#">111111111</a><a href="#">111111111</a></div>
+    </li>
+    <li>
+   		<a href="#">1111111</a>
+   		<div><a href="#">111111111</a><a href="#">111111111</a><a href="#">111111111</a></div>
+    </li>
+    <li>
+   		<a href="#">1111111</a>
+   		<div><a href="#">111111111</a><a href="#">111111111</a><a href="#">111111111</a></div>
+    </li>
+    <li>
+   		<a href="#">1111111</a>
+   		<div><a href="#">111111111</a><a href="#">111111111</a><a href="#">111111111</a></div>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+		
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		
+		function Father(money){
+			this.money = money;
+		}
+		
+		Father.prototype ={
+			sleep : function(){
+				
+			},
+			test : function(){
+				
+			}
+		} 
+		
+		var f1 = new Father()
+		var f2 = new Father();
+		
+		console.log( f1.sleep === f2.sleep ); //false
+		console.log( f1.test === f2.test ); //true
+		
+		Father2.prototype = new Fahter();
+		function Father2(){
+			
+		}
+		Father2.prototype = {
+			
+		}
+		
+		Son.prototype = new Father2();
+		
+		function Son(){
+			Father.apply(this,arguments);
+			Father2.apply(this)
+		}
+		
+		var s = new Son(88888);
+		s.test();
+		s.sleep();
+	</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+body{height:2500px; padding:0; margin:0;}
+#div1{height:30px; width:100%; background:#0AF;}
+#div2{height:30px; width:100%; background:red; top:400px; position:absolute;}
+</style>
+
+<script type="text/javascript">
+	
+	//同步，按照步骤顺序执行
+	//异步，同时执行（并发）
+	/*
+	setInterval(function(){console.log(111);},1000);
+	
+	setInterval(function(){console.log(222);},1000);
+	
+	setInterval(function(){console.log(333);},1000);
+	*/
+	
+	//alert(window.onload);
+	"use strict";
+	function b(x, y, a) {
+		arguments[2] = 10;
+		alert(a);
+	}
+	b(1, 2, 3);
+
+	
+	
+	if (!("a" in window)) {
+		var a = 1;
+	}
+	alert(a);
+
+	
+	window.onload = function(){
+		var box = document.getElementById("box");
+		target(box);
+	};
+	
+	function target(t){
+		t.innerHTML = "你好，hello world!!!";
+	}
+	//target();
+</script>
+
+</head>
+
+<body>
+	<div id="box"></div>
+</body>
+</html>

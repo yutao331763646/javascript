@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+			//f(x)(y);
+			/*
+			function f(x){
+				return function(y){
+					return x*y;
+				}
+			}
+			f(10)
+			*/
+			
+			/*
+			var arr = ['a','b','c','d','d','a'];
+			
+			var temp = []; 
+			for(var i=0; i<arr.length; i++){
+				var flag = false;
+				
+				for(var j=0; j<temp.length; j++){
+					if(arr[i]==temp[j]){
+						flag = true;
+						break;
+					}
+				}
+				if(!flag){
+					temp.push(arr[i]);
+				}
+			}
+			
+			
+			for(var i=0; i<temp.length; i++){
+				var count = 0;
+				for(var j=0; j<arr.length; j++){
+					if(temp[i] == arr[j]){
+						count++;
+					}
+				}
+				console.log("字母"+temp[i]+"出现的次数："+count);
+			}
+			*/
+			
+			/*
+			var arr = [1,2,3];
+			
+			
+			function copy(a){
+				var t = [];
+				for(var i in a){
+					t.push(a[i]);
+				}
+				return t;
+			}
+			
+			var narr = copy(arr);
+			*/
+			
+			/*
+			function m1(x){
+				x(m1);   
+			}
+			function  m2(x){   
+				x(m2);   
+			}
+			m1(m2);
+			*/
+			
+			/*
+			function map(a, num){
+				var newlist = [];
+				if(a instanceof Array && a.length > 0) {
+					if(!num) {
+						num = 0;
+					}
+					for(var i in a){
+						newlist.push(a[i]+num);
+					}
+				}
+				return newlist;
+			}
+			
+			var list = [1,2,3];
+			console.log( map(list, 5) );
+*/
+			/*
+			list = [{name:"汪汪汪", score: 99},{name:"王尼玛", score: 87}, {name:"王大锤", score:92} ];
+			
+			list.sort(function(pre,next){
+				return pre.score-next.score;
+			});
+			*/
+			
+			/*
+			var list = [1,2,3,[4,5,[6,7,[8,8,8,[222,333,444],9]]],[12,3],[5,6,7],[444]];
+			
+			
+			function print(a, level){
+				
+				for(var i=0; i<a.length; i++){
+					if(a[i] instanceof Array) {
+						print(a[i], level+1);
+					} else {
+						console.log("level:"+level+" "+a[i]);					
+					}
+				}
+			}
+			print(list,0);
+			*/
+			
+			function merge(a,b){
+				var list = [];
+				for(var i=0; i<a.length; i++){
+					list.push(a[i]);
+				}
+				
+				for(var i=0; i<b.length; i++){
+					list.push(b[i]);
+				}
+				return list;
+			}
+			
+		</script>
+    </head>
+    <body>	
+		
+    </body>
+</html>
+

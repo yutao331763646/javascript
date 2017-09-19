@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <style type="text/css">
+      
+     </style>
+	 <script src="js/common.js"></script>
+     <script type="text/javascript">
+		var now = new Date();
+		var second = now.getSeconds();
+		var s1 = Math.floor(second/10);
+		var s2 = second%10;
+		var imglist = document.getElementsByTagName("img");
+		imglist[4].src = "img/"+s1+".png";
+		imglist[5].src = "img/"+s2+".png";
+		var minute = now.getMinutes();
+		var m1 = Math.floor(minute/10);
+		var m2 = minute%10;
+		imglist[2].src = "img/"+m1+".png";
+		imglist[3].src = "img/"+m2+".png";
+		var hour = now.getHours(); 
+		var h1 = Math.floor(hour/10);
+		var h2 = hour%10;
+		imglist[0].src = "img/"+h1+".png";
+		imglist[1].src = "img/"+h2+".png";
+		
+		
+		setInterval(function(){
+			var now = new Date();
+			var second = now.getSeconds();
+			var s1 = Math.floor(second/10);
+			var s2 = second%10;
+			var imglist = document.getElementsByTagName("img");
+			imglist[4].src = "img/"+s1+".png";
+			imglist[5].src = "img/"+s2+".png";
+			
+			if(s1==0 && s2==0) {
+				var minute = now.getMinutes();
+				var m1 = Math.floor(minute/10);
+				var m2 = minute%10;
+				imglist[2].src = "img/"+m1+".png";
+				imglist[3].src = "img/"+m2+".png";
+				
+				if(m1==0 && m2==0) {
+					var hour = now.getHours(); 
+					var h1 = Math.floor(hour/10);
+					var h2 = hour%10;
+					imglist[0].src = "img/"+h1+".png";
+					imglist[1].src = "img/"+h2+".png";
+				}
+			}
+		}, 1000);
+		
+     </script>
+     <body>
+		<div id="div">
+			<img id="" src="img/0.png" />
+			<img id="" src="img/8.png" />
+			时
+			<img id="" src="img/1.png" />
+			<img id="" src="img/5.png" />
+			分
+			<img id="" src="img/0.png" />
+			<img id="" src="img/9.png" />
+			秒
+		</div>
+	</body>
+
+
+</html>

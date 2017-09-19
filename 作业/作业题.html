@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.bg {
+			height: 500px;
+			background: gray;
+			position: relative;
+		}
+		.per {
+			position: absolute;
+			width: 2px; background: white;
+			height: 100px;
+			bottom: 0;
+		}
+	</style>
+	<body>
+		<div id="box" class="bg">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		//假设有个300人，每人手里有100块钱，从此刻开始，每过1分钟，每个人都从自己手里拿出1块钱，随机发给别人。
+		//（1 允许负债， 2 当你的钱数为0时，从队伍中消失）
+
+		onload = function(){
+			var box = document.getElementById("box");
+			var frag = document.createDocumentFragment();
+			for(var i=0; i<300; i++){
+				var p = document.createElement("div");
+				p.className = "per";
+				p.style.left = 5*i + "px"
+				frag.appendChild(p);
+			}
+			box.appendChild(frag);
+			
+			
+			var list = document.getElementsByClassName("per");
+			setInterval(function(){
+				
+				//所有拿出1块钱
+				for(var i=0; i<list.length; i++){
+					list[i].style.height = list[i].offsetHeight - 1 + "px";	
+					
+					//随机挑选一个人，发1块钱
+					var index = Math.floor(Math.random()*300);
+					while(index == i){
+						index = Math.floor(Math.random()*300);
+					}
+					//i和index不相等
+					list[index].style.height = list[index].offsetHeight + 1 + "px"; 
+					
+					if(list[i].offsetHeight == 0) {
+						list[i].remove();
+						i--;
+					}
+				}
+			}, 50);
+		}
+	</script>
+</html>

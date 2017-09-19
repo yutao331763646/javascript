@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>烟花</title>
+        <style media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            #box{
+                width:800px;
+                height:600px;
+                position: relative;
+                margin: 100px auto;
+                background:#000000;
+                border:2px solid red;
+                overflow: hidden;
+            }
+            .fire{
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                position: absolute;
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+    </body>
+    <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        var box = document.getElementById('box');
+      	box.addEventListener("click", function(e){
+      		var mousexy = {x:e.offsetX, y:e.offsetY};
+      		
+      		for(var i=0; i<360; i+=30) {
+      			new Fire(mousexy).init(i).appendTo(box).move();
+      		}
+      	})
+      	
+      	function Fire(pos){
+      		this.ele = document.createElement("div");
+      		this.init = function(deg){
+      			this.degree = deg;
+      			this.ele.className = "fire";
+      			//初始位置
+      			this.ele.style.left = pos.x + "px";
+      			this.ele.style.top = pos.y + "px";
+      			//颜色
+      			this.ele.style.background = randomColor();
+      			return this;
+      		}
+      		this.appendTo = function(target){
+      			target.appendChild(this.ele);
+      			return this;
+      		}
+      		this.move = function(){
+      			var radius = 0;
+      			this.timer = setInterval(function(){
+      				this.ele.style.left = pos.x + radius*Math.cos(this.degree*Math.PI/180) + "px";
+      				this.ele.style.top = pos.y + radius*Math.sin(this.degree*Math.PI/180) + "px";
+      				this.ele.style.opacity = getComputedStyle(this.ele)["opacity"] - 0.01;
+      				radius++;
+      				if(radius >= 600) {
+      					this.ele.remove();
+      					clearInterval(this.timer);
+      				}
+      			}.bind(this), 30);
+      		}
+      	}
+      	
+    </script>
+</html>

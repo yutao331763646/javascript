@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+		
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		//继承extend、封装
+		
+		/*function Father(name, money){
+			this.name = name;
+			this.money = money;
+		}
+		
+		function Son(name) {
+			this.name = name;
+		}
+		
+		var f = new Father("王健林", 600000000000);
+		Son.prototype = f;
+		
+		var s = new Son("王思聪");
+		
+		console.log(s.money);
+		*/
+		
+		function Ipod(){
+			this.price = arguments[0];
+			this.playmusic = function(){
+				//50W行
+				console.log("playmusic");
+			}
+		}
+		
+		function Itouch(){
+			this.color = arguments[1];
+			Ipod.apply(this, arguments);
+			this.playgame = function(){
+				console.log("playgame");
+			}
+		}
+		
+		function Iphone(){
+			this.size = arguments[2];
+			Itouch.apply(this, arguments);
+			this.phonecall = function(){
+				console.log("phonecall");
+			}
+		}
+		
+		var ip = new Iphone(9999, "red", 4.7);
+		console.log( ip.color , ip.price, ip.size );
+		ip.playmusic();
+		ip.playgame();
+		ip.phonecall();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	/*	
+		var obj = {
+			id : "obj",
+			print : function(){
+				console.log(this);
+			}
+		}
+		var obj2 = {
+			id : "obj2"
+		}
+		
+		
+		
+		obj.print.call(obj2);
+		
+		//等价于obj2.print()
+		//obj2.print();
+		
+		obj.print.call();
+		*/
+		
+	</script>
+</html>

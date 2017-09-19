@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+			var a = [12,9,38,44,98,7,35,59,49,88,38];
+			console.log(a);
+			function quicksort(a){
+				if(a.length<=1) {
+					return a;
+				}
+				var midIndex = parseInt(a.length/2);
+				var midValue = a[midIndex];
+				var left = [];
+				var right = [];
+				for(var i in a){
+					if(i == midIndex) {
+						continue;
+					}
+					if(a[i]<midValue) {
+						left.push(a[i]);
+					} else {
+						right.push(a[i]);
+					}
+				}
+				return quicksort(left).concat(midValue).concat(quicksort(right));
+			}
+			console.log( quicksort(a) );
+			
+		</script>
+    </head>
+    <body>	
+		
+    </body>
+</html>
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+			var zhangsan = {
+				username : "zhangsan",
+				talk : function(){
+					console.log("我叫"+this.username);
+				}
+			}
+
+			zhangsan.talk();
+
+			var lisi = new Object();
+			lisi.username = "lisi";
+			lisi.talk = zhangsan.talk;
+
+			lisi.talk();
+
+		</script>
+    </head>
+    <body>
+
+    </body>
+</html>

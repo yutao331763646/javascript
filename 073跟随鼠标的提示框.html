@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<style type="text/css">
+body{font:12px; padding:0; margin:0;}
+#bigdiv{width:1000px;  margin:0 auto;}
+.smalldiv{width:auto; height:100px; background:#066;}
+.infoa{color:#fff;}
+.panel{ position: absolute; width : 300px; }
+</style>
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<script src="js/common.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+	var links = document.getElementsByClassName("infoa");
+	var layer = document.getElementsByClassName("panel")[0];
+	links = toarray(links);
+	links.forEach(function(item,index,array){
+		item.onclick = function(e){
+			var e = e || event;
+			var mouse = {x:e.clientX, y:e.clientY};
+			layer.style.display = "block";
+			
+			layer.style.left = mouse.x + "px";
+			layer.style.top = mouse.y + "px";
+			
+			e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+			//e.cancelBubble ? e.cancelBubble = true : e.stopPropagation();
+		}
+	});
+	document.onclick = function(){
+		layer.style.display = "none";
+	}
+}
+</script>
+</head>
+<body>
+	<div id="bigdiv">
+		<div class="smalldiv"><a href="#" class="infoa">个人信息AAA</a></div>
+		<div class="smalldiv"><a href="#" class="infoa">个人信息BBB</a></div>
+		<div class="smalldiv"><a href="#" class="infoa">个人信息CCC</a></div>
+		<div class="smalldiv"><a href="#" class="infoa">个人信息DDD</a></div>
+		<div class="panel panel-default" style="display:none">
+		  <div class="panel-heading">Panel heading without title</div>
+		  <div class="panel-body">
+				<p class="text-muted">Panel content</p>
+				<p class="text-primary">Panel content</p>
+				<p class="text-danger">Panel content</p>
+		  </div>
+		</div>
+	</div>
+</body>
+</html>

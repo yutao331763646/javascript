@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+</style>
+<link rel="stylesheet" href="css/bootstrap.css">
+<script src="js/common.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		var btnlist = document.getElementsByClassName("deletebtn");
+		for(var i=0; i<btnlist.length; i++){
+			btnlist[i].onclick = function(){
+				//parentNode父节点
+				this.parentNode.parentNode.remove();
+			}
+		}
+		
+		var savebtn = document.getElementsByClassName("savebtn");
+		savebtn.onclick = function(){
+			var tr = ...
+			var th
+			var td1 = ...
+			var td2 = ...
+			var td3 = ...
+			var delbtn = document.createElement("a");
+			delbtn.className = "btn btn-danger";
+			delbtn.onclick = function(){
+				this.parentNode.parentNode.remove();
+			}
+		}
+		
+	}
+</script>
+
+</head>
+
+<body>
+	<div class="container" style="margin-top: 50px">
+		
+		<div class="row">
+			<div class="col col-lg-6 col-lg-offset-3">
+				<form class="form">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">First Name</div>
+							<input type="text" style="width: 300px;" class="form-control " placeholder="Amount">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">Last Name</div>
+							<input type="text" style="width: 300px;" class="form-control " placeholder="Amount">
+						</div>
+					</div>
+					<a class="btn btn-primary savebtn">保存</a>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-lg-6 col-lg-offset-3">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Opration</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>1</th>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td><a class="btn btn-danger deletebtn btn-sm">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<th>2</th>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td><a class="btn btn-danger deletebtn btn-sm">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<th>3</th>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td><a class="btn btn-danger deletebtn btn-sm">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<th>3</th>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td><a class="btn btn-danger deletebtn btn-sm">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<th>3</th>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td><a class="btn btn-danger deletebtn btn-sm">删除</a>
+							</td>
+						</tr>					
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

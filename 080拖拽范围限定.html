@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>DOM操作</title>	
+	</head>
+	<style>
+		* {
+			margin: 0; padding: 0;
+		}
+		#ball {
+			width: 200px; height: 200px; background: black;
+			position: absolute; 
+			left: 0; top: 0;
+		}		
+	</style>
+	<script src="js/common.js"></script>
+	<body>
+		<div id="ball">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		onload = function(){
+			var ball = document.getElementById("ball");
+			ball.onmousedown = function(e){
+				var e = e || event;
+				var offsetmouse = {x:e.offsetX, y:e.offsetY};
+				document.onmousemove = function(e){
+					var e = e || event;
+					var mouse = {x:e.clientX, y:e.clientY};
+					ball.style.left = Math.min(window.innerWidth-ball.offsetWidth, Math.max(0, mouse.x - offsetmouse.x)) + "px";
+					ball.style.top = Math.min(window.innerHeight-ball.offsetHeight, Math.max(0, mouse.y - offsetmouse.y)) + "px";
+				}
+			}
+			
+			document.onmouseup = function(e){
+				document.onmousemove = "";
+			}
+		}
+	</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

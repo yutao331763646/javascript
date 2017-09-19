@@ -1,0 +1,74 @@
+﻿<!DOCTYPE>
+<html  charset="UTF-8">
+
+<title>完美拖拽</title>
+<style type="text/css">
+html,body{overflow:hidden;}
+body,div,h2,p{margin:0;padding:0;}
+body{color:#fff;background:#000;font:12px/2 Arial;}
+p{padding:0 10px;margin-top:10px;}
+span{color:#ff0;padding-left:5px;}
+#box{position:absolute;width:300px;height:150px;background:#333;border:2px solid #ccc;top:50%;left:50%;margin:-75px 0 0 -150px;}
+#box h2{height:25px;cursor:move;background:#222;border-bottom:2px solid #ccc;text-align:right;padding:0 10px;}
+#box h2 a{color:#fff;font:12px/25px Arial;text-decoration:none;outline:none;}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+
+	var box = document.getElementById("box");
+	var h2 = document.getElementById("box").getElementsByTagName("h2")[0];
+	var draginfo = box.getElementsByTagName("span")[0];
+	var offsettop = box.getElementsByTagName("span")[1];
+	var offsetleft = box.getElementsByTagName("span")[2];
+	var review = box.getElementsByTagName("a")[0];
+	var posArray = [];
+	
+	review.addEventListener("mousedown", function(e){
+		var e = e || event;
+		e.stopPropagation ? e.stopPropagation() : e.cancelBubble=true;
+		
+		posArray.reverse();
+		var mt = setInterval(function(){
+			if(posArray.length == 0) {
+				clearInterval(mt);
+				return;
+			}
+			var pos = posArray.shift();
+			box.style.left = pos.x + "px";
+			box.style.top = pos.y + "px";
+		},50);
+	});
+	
+	
+	h2.addEventListener("mousedown", function(e){
+		posArray = [];
+		var e = e || event;
+		var offset = {x:e.offsetX, y: e.offsetY};
+		document.addEventListener("mousemove", move)
+		function move(e){
+			var e = e || event;
+			box.style.left = Math.min(window.innerWidth-box.offsetWidth,Math.max(0,e.clientX-offset.x)) + "px";
+			box.style.top =  Math.min(window.innerHeight-box.offsetHeight,Math.max(0,e.clientY-offset.y)) + "px";
+			draginfo.innerText = true;
+			offsettop.innerText = box.style.top;
+			offsetleft.innerText = box.style.left;
+			posArray.push( {x:box.offsetLeft, y:box.offsetTop} );
+		}
+		document.addEventListener("mouseup", function(e){
+			draginfo.innerText = false;
+			document.removeEventListener("mousemove", move);
+		});
+	});
+};
+</script>
+</head>
+<body>
+<div id="box" style="margin-left: 0px; margin-top: 0px; left: 533px; top: 231px;">
+    <h2><a href="javascript:;">点击回放拖动轨迹</a></h2>
+    <p><strong>Drag:</strong><span>false</span></p>
+    <p><strong>offsetTop:</strong><span>231</span></p>
+    <p><strong>offsetLeft:</strong><span>533</span></p>
+</div>
+
+
+</body></html>

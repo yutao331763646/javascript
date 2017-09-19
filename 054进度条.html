@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>进度条 </title>	
+	</head>
+	<style>
+		#progress{
+			position: relative;
+			margin: auto;
+			top: 200px;
+			display: block;
+			width: 200px;
+			height: 20px;
+			border-style: dotted;
+			border-width: thin;
+			border-color: darkgreen;
+		}
+		#filldiv{
+			position:absolute;
+			top: 0px;
+			left: 0px;
+			width: 0px;
+			height: 20px;
+			background: blue;
+		}
+		#percent{
+			position: absolute;
+			top: 0;
+			left: 200px;
+			
+		}
+	</style>
+	<script src="js/common.js"></script>
+	<script>
+		var _width = 0;
+		
+		var t = setInterval(function(){
+			var div = window.document.getElementById("filldiv");
+			var span = document.getElementById("percent");
+			//log(_width);
+			div.style.width = _width+"px";
+			span.innerHTML = parseInt(_width/200 * 100) +"%";
+			
+			if(_width == 200){
+				clearInterval(t);
+			}
+			_width += 2;
+		},50);
+	
+	</script>
+	<body>
+		<div id="progress">
+			<div id="filldiv"></div>
+			<span id="percent">0</span>
+		</div>
+	</body>
+</html>

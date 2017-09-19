@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    *{
+    	margin:0;
+    	padding:0;
+    }
+    #box{
+    	width:600px;
+    	height:500px;
+    	border:1px solid red;
+    	position:relative;
+    	margin:0 auto;
+    	display:none;
+
+    }
+	#eat{
+		height:0;
+	    width:0;
+		border:20px solid cyan;
+		border-radius:50%;
+		border-left-color:white;
+		position:absolute;
+	}
+	#eyes{
+		width:0px;
+		height:0px;		
+		border:2px solid #000;
+		position:absolute;
+		border-radius:50%;
+		left:0;
+		top:-12px;
+	}
+
+	#btn{
+		position:absolute;
+		left:250px;
+		top:300px;
+		width:100px;
+		height:50px;
+		text-align:center;
+	}
+	#start{
+		position:absolute;
+		left:332px;
+		top:1px;
+		width:600px;
+		height:500px;
+		background:cyan;
+	}
+	#over{
+		font-size:50px;
+    	text-align:center;
+    	line-height:400px;
+    	position:absolute;
+		left:332px;
+		top:1px;
+		width:600px;
+		height:500px;
+		background:#000;
+		color:#fff;
+		display:none;
+	}
+	.ball{
+		width:20px;
+		height:20px;
+		border-radius:50%;
+		position:absolute;
+	}
+	h3{
+		position:absolute;
+		right:40px;
+		top:10px;		
+	}
+	b{
+		font-size:100px;
+		text-indent:200px;
+		margin-left:150px;
+	}
+		
+</style>
+
+</head>
+<body>
+	<div id="box">
+		<div id="eat">
+		    <div id="eyes"></div>
+	    </div>
+	    <h3>
+	        Score:<span id="sp">0</span>
+	    </h3>
+	</div>
+	<div id="start">
+	    <b>吃豆豆</b>
+	    <input type="button" value="开始游戏" id="btn">
+	</div>	
+	<div id="over">Game Over!</div>
+</body>
+</html>
+<script>     
+    function rand(max,min){
+    	return Math.floor(Math.random()*(max-min+1))+min;
+    }
+    function $(id){
+		return document.getElementById(id);
+	}
+    //点击开始吃豆
+    $("btn").onclick=function(){
+    	var bgm=new bigMouth();
+    	bgm.init();  
+    	bgm.dou();
+    	bgm.disp(bgm.start,"none");
+    	bgm.disp(bgm.box,"block");
+    }
+    
+    function bigMouth(){
+    	this.eat=$("eat");
+    	this.start=$("start");
+    	this.box=$("box");
+    	this.eyes=$("eyes"); 
+    	this.over=$("over");
+    }
+    bigMouth.prototype.disp=function(obj,sty){
+    	obj.style.display=sty;
+    }
+    //嘴巴的开合
+    var flag=true;
+    bigMouth.prototype.init=function(){   	
+    	var that=this;   	
+	    var timer=setInterval(function(){
+			if(flag){
+				that.eat.style.borderLeftColor="cyan";
+				flag=false;
+			}else{
+				that.eat.style.borderLeftColor="white";
+				flag=true;
+			};
+			that.killDou();
+	    },100)
+	    this.mouthMove();
+    }
+    //嘴巴的移动
+    bigMouth.prototype.mouthMove=function(){
+    	var that=this;
+    	document.onkeydown=function(e){
+			e=e||window.event;
+			var code=e.keyCode||e.Which;		
+			switch(code){
+				case 37:				    			    
+				    that.leftMove();
+				    break;				        
+				case 39:				   
+				    that.rightMove();
+				    break;
+				case 38:				        	
+				    that.topMove();
+				    break;			                                
+				case 40:			        				        
+					that.botMove();
+					break;                       		        
+			}	
+	    }
+    }
+    //左移动
+    bigMouth.prototype.leftMove=function(){ 
+    	var that=this;
+    	clearInterval(this.timer);//左
+        this.timer=setInterval(function(){				    				 
+            if(that.eat.offsetLeft<10){		                    	
+	    		clearInterval(that.timer);
+	    		that.disp(over,"block");
+	    		that.disp(box,"none");
+    	    }else{
+    	    	that.eat.style.left=that.eat.offsetLeft-10+"px" ; 
+                that.eat.style.transform="rotate(360deg)";
+                that.eyes.style.top="-12px";	
+    	    }
+        },100)
+    }
+    //右移动
+    bigMouth.prototype.rightMove=function(){
+     	var that=this;
+    	clearInterval(this.timer);
+    	this.timer=setInterval(function(){			    						        
+	        if(that.eat.offsetLeft>that.box.offsetWidth-that.eat.offsetWidth-10){
+	    		clearInterval(that.timer);					    		
+	    		that.disp(over,"block");
+	    		that.disp(box,"none");			    		
+    	    }else{
+		        that.eat.style.left=that.eat.offsetLeft+10+"px" ;
+		        that.eat.style.transform="rotate(-180deg)"
+		        that.eyes.style.top="12px";
+	        }
+        },100)			    	
+    }
+    //上移动
+    bigMouth.prototype.topMove=function(){ 
+    	var that=this;
+        clearInterval(this.timer);
+    	this.timer=setInterval(function(){
+    		if(that.eat.offsetTop<10){
+	    		clearInterval(that.timer);
+	    		that.disp(over,"block");
+    		    that.disp(box,"none");				    		
+    	    }else{
+    	    	that.eat.style.top=that.eat.offsetTop-10+"px";
+                that.eat.style.transform="rotate(90deg)";
+    	    }
+    	},100);
+    }
+    //下移动
+    bigMouth.prototype.botMove=function(){   
+    	var that=this;
+        clearInterval(this.timer);
+    	this.timer=setInterval(function(){
+    		if(that.eat.offsetTop>that.box.offsetHeight-that.eat.offsetHeight-10){
+	    		clearInterval(that.timer);
+	    		that.box.appendChild(document.createTextNode("Game Over!"))					    		
+    	    }else{
+    	    	that.eat.style.top=that.eat.offsetTop+10+"px";
+                that.eat.style.transform="rotate(270deg)";
+    	    }
+    	},100);
+    }
+    //创建豆豆
+    bigMouth.prototype.create=function(){
+	    var ball=document.createElement("div");
+		ball.className="ball";		
+		ball.style.background=`rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)})`;
+		ball.style.left=rand(1,box.offsetWidth-20)+"px";
+		ball.style.top=rand(1,box.offsetHeight-20)+"px";	    		
+		this.box.appendChild(ball);	    
+    }
+    
+    //每次创建不超过五个豆
+    var sum=0;
+    bigMouth.prototype.dou=function(){
+    	var that=this;
+    	timer=setInterval(function(){
+    		sum++;
+    		if(sum>5){
+    			clearInterval(timer);
+    		}else{
+    			that.create();		
+    		}   		
+    	},1000)
+    }
+    //吃豆得分
+    var score=0;
+    bigMouth.prototype.killDou=function(){  	       
+  	   	this.m=parseInt(this.eat.style.left);
+  	   	this.t=parseInt(this.eat.style.top);
+  	   	//console.log(this.m)
+	    var balls = document.getElementsByClassName("ball");
+  	   	for(var i=0;i<balls.length;i++){
+	  	   	var l = parseInt(balls[i].style.left);
+	  	   	var g = parseInt(balls[i].style.top);
+	  	   	if(this.m+40>l && this.m< l+20 && this.t < g+20 && this.t +40> g){
+	  	   		this.box.removeChild(balls[i]);
+	  	   		score++;
+	  	   		var that=this;
+	  	   		setTimeout(function(){
+	  	   			that.create();
+	  	   		},2000);	  	   		
+	  	   	}
+	  	   	$("sp").innerHTML=score;
+  	   	} 		 	
+    }
+</script>

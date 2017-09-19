@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+
+</style>
+
+<script type="text/javascript">
+	
+	function methoda(){
+		//"use strict";
+		methodb();
+	}
+	
+	function methodb(){
+		console.log(arguments.callee);
+	}
+	
+	methoda();
+	
+	/*
+	//使用递归求10的阶乘
+	(function(x){
+		if(x==1) return 1;
+		return x*arguments.callee(x-1);
+	})(10);
+	*/
+	//"use strict";
+	
+	/*
+	function m(){
+		console.log(this);
+	}
+	m();
+	
+	setTimeout(m, 1000);
+	
+	var obj = {
+		test : m
+	}
+	obj.test();
+	*/
+</script>
+
+</head>
+
+<body>
+	<div id="box">回到顶部</div>
+</body>
+</html>

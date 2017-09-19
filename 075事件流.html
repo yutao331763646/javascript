@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>DOM操作</title>	
+	</head>
+	<style>
+		
+	</style>
+	<script src="js/common.js"></script>
+	<body>
+		<div id="big" style="position:absolute; width:400px; height:400px; background: #cdf">
+			<div id="small" style="position:absolute; left:500px; top:300px; width:200px; height:200px; background: blue"></div>
+		</div>
+		
+		<script>
+			window.onclick = function(){
+				alert("window");
+			}
+			big.onclick = function() {
+				alert("big");
+			}
+			document.documentElement.onclick = function() {
+				alert("html");
+			}
+			document.body.onclick = function() {
+				alert("body");
+			}
+			small.onclick = function() {
+				alert("small");
+			}
+			
+		</script>
+	</body>
+	
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

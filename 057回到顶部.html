@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+body{height:2500px; padding:0; margin:0;}
+#box {
+	width: 100px; height: 50px;
+	display : none;
+	position: fixed;
+	right : 50px;
+	bottom: 50px;
+}
+</style>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var box = document.getElementById("box");
+		window.onscroll = function(){
+			var _scrolltop = document.body.scrollTop || document.documentElement.scrollTop;
+			
+			if(_scrolltop > 500) {
+				box.style.display = "block";
+			} else {
+				box.style.display = "none";
+			}
+		}	
+		box.onclick = function(){
+			document.body.scrollTop = document.documentElement.scrollTop = 0;
+		}
+	};
+</script>
+
+</head>
+
+<body>
+	<div id="box">回到顶部</div>
+</body>
+</html>

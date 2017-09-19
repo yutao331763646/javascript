@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+
+</style>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+	var m = "xyz";
+	var list = ["1","x","a",20];
+	
+	//console.log(  value, index, arr );
+	
+	list.forEach(console.log);
+	
+	
+	
+	function aaa(){
+		b();
+	}
+	function ccc(){
+		b();	
+	}
+	
+	function b(){
+		alert(b.caller);
+	}
+	
+	ccc();
+	
+	aaa();
+</script>
+
+</head>
+
+<body>
+	<div id="box">回到顶部</div>
+</body>
+</html>

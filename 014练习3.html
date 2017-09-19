@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+			//打印出1000-2000年中所有的闰年，并以每行六个数的形式输出
+			var count = 0;
+			for(var year=1000; year<=2000; year++){
+				if(year%400==0||year%100!=0&&year%4==0) {
+					count++;
+					document.write(year+" ");
+					if(count%6==0){
+						document.write("<br>");
+					}
+				}
+			}
+			/*
+				假设某人有 100,000  现金。 每经过一次路口需要进行一次交费。 
+				交费规则为当他现金大于50,000  时每次需要交 5%
+				如果现金小于等于 50,000  时每次交 5,000 。 
+				请写一程序计算此人可以经过多少次这个路口
+			*/
+			var total = 0;
+			
+			for(var money = 100000; money>=5000; money>50000?money*=0.95:money-=5000){
+				total++;
+			}
+			
+			//条件 ? 条件为真执行这里 : 条件为假执行这里;
+			
+			console.log("经过了"+total+"个路口");
+			
+		</script>
+    </head>
+    <body>	
+		
+    </body>
+</html>
+

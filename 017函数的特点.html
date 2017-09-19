@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+		<script>
+
+			method();
+
+			var res = method();
+
+			//匿名函数，只能在定义的时候执行一次
+			(function(n,m){
+				//匿名函数的自运行
+			})(10,99);
+
+			//赋值式函数
+			var test = function(){
+
+			}
+			test();
+
+			//声明式
+			function method(){
+				//return "abc";
+				console.log(123);
+			}
+
+			function m0(){
+				function m1() {
+					function m2(){
+						m1();
+					}
+					m2();
+				}
+				m2();
+			}
+
+		</script>
+    </head>
+    <body>
+
+    </body>
+</html>
+

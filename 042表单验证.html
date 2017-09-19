@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <style type="text/css">
+          *{
+              padding: 0; margin: 0;
+          }
+          #edit {
+              margin: 0 auto;
+              width: 1000px;
+              text-align: center;
+              overflow: hidden;
+          }
+          #commentlist {
+              margin: 0 auto;
+              width: 1000px;
+          }
+          #commentlist .comment{
+              width: 800px;
+              min-height: 80px;
+              margin: 20px auto;
+              background: darkkhaki;
+              border-radius: 3px;
+              position: relative;
+              overflow: hidden;
+          }
+          #commentlist .comment p{
+              margin: 10px 10px;
+          }
+          #sendBtn {
+              display: block;
+              margin: 10px auto;
+              width: 100px;
+              height : 30px;
+              line-height: 30px;
+              background: linear-gradient(to bottom, #faa, #f40);
+              box-shadow: 0 0 2px #000;
+              border-radius: 4px;
+          }
+
+          #sendBtn:hover{
+              cursor: pointer;
+              background: linear-gradient(to bottom, #fee, #f40);
+          }
+     </style>
+	 <script src="js/common.js"></script>
+     <body>
+          <div id="edit">
+              <p>请输入你的用户名:</p>
+              <p>
+                   <input id="msginput" name="" rows="5" cols="60"/>
+              </p>
+              <p><a class="send" id="sendBtn" onclick="check()">注册</a></p>
+          </div>
+         
+     </body>
+     <script type="text/javascript">
+			
+			
+			
+			function check(){
+				var msg = msginput.value;
+				//用户名长度6~20之间
+				if(msg.length<6||msg.length>20) {
+					alert("用户名长度不正确!");
+					return;
+				}
+				//数字不可以作为开头
+				var asc = msg.charCodeAt(0);
+				if(asc>=48 && asc<=57){
+					alert("不可以用数字开头");
+					return;
+				}
+				//内容只能包含数字字母下划线
+				for(var i=0; i<msg.length; i++){
+					var asc = msg.charCodeAt(i);
+					var isNumber = asc>=48 && asc<=57;
+					var isLetter = (asc>=65 && asc<=90) || (asc>=97 && asc<=122);
+					var isunderline = asc == 95;
+					if(!isNumber && !isLetter && !isunderline){
+						alert("只能包含数字字母下划线！");
+						return;
+					}
+					
+				}
+				
+			}
+			
+			
+     </script>
+</html>

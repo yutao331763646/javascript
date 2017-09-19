@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+	<style type="text/css">
+	</style>
+</head>
+<script type="text/javascript" src="js/common.js" ></script>
+<script>
+	/*console.log( DateUtil.getDayAfter(7) );
+	console.log( DateUtil.getDayAfter("20") );
+	console.log( DateUtil.getDayAfter("abcdef") );*/
+	function copyfile(srcfile, destfile){
+	/*	if(srcfile是否存在) {
+			if(是否拥有读取srcfile的权限?) {
+				if(是否拥有足够的硬盘空间来复制文件) {
+					if(目标位置是否有可读写的权限) {
+						if(读取到一半时,突然断电) {
+							if(读取到一半是,用户点击了取消?) {
+								if(复制到一半是, destfile被删除了) {
+									if(复制到一半时, srcfile被删除了) {*/
+										throw new Error("有人要删除文件！！！警报！");
+										var destfile = srcfile.clone();
+		/*							}
+								}
+							}
+						}
+					}
+				}
+			}
+		}*/
+	}
+	function main(){
+		//这里写了很多代码
+		try {
+			copyfile("111", "2222");
+		} catch(e) {
+			//根据产生的错误消息，也就这个对象e
+			//来决定，要不要处理错误
+			//如果处理不了
+			throw e;
+		}
+		console.log("其他代码");
+	}
+	try {
+		window.main();
+	} catch(e) {
+		console.log(e);
+	}
+	window.console.log("aaaaaaaaaaa");
+	offsetPage(document.getElementById("box"));
+</script>
+<body>
+	<div id="box"></div>
+
+</body>
+</html>
+

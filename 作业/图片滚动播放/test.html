@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.banner{
+		position: relative;
+		width: 810px;
+		height: 320px;
+		margin: 50px auto;
+		background: grey;
+		overflow: hidden;
+	}
+	.img-list{
+		list-style:none;
+		position: absolute;
+		left:0; top:0;
+		width: 3240px;
+		height: 320px;
+	}
+	.img-list li{
+		float: left;
+	}
+	.banner-nav-list{
+		list-style:none;
+		position: absolute;
+		right:100px; bottom:50px;
+		
+	}
+	.banner-nav-list li {
+		background: red;
+		float: left;
+		width: 20px; height: 20px;
+		margin-right: 10px;
+		cursor: pointer;
+		text-align: center;
+	}
+	
+	.banner-nav-list li.active{
+		background: yellow;
+	}
+</style>
+
+<script  src="startMove.js"></script>
+<script type="text/javascript">
+	var oUL;
+	var oLIs;
+	var oNavlist;
+	var currentIndex=0;
+	window.onload = function(){
+		oUL = document.getElementsByClassName("img-list")[0];
+		oLIs = oUL.children;
+		oNavlist = document.getElementsByClassName("banner-nav-list")[0].children;
+		banner(); //轮播图
+		
+		////xxxx();
+	}
+	
+	function banner(){
+		currentIndex = 1;
+		var newli = oLIs[0].cloneNode(true);
+		oUL.appendChild(newli);
+		oUL.style.width = oLIs.length*oLIs[0].offsetWidth + "px";
+		
+		for(var i=0; i<oNavlist.length; i++){
+			oNavlist[i].index = i;
+			oNavlist[i].onclick = function(){
+				clearInterval(timer);
+				
+				startMove(oUL, {left: this.index * -oLIs[0].offsetWidth});
+				for(var i=0;i<oNavlist.length;i++){
+					oNavlist[i].className = "";
+				}
+				this.className = "active";
+				currentIndex = this.index+1;
+				
+				timer = setInterval(move,3000);
+			}
+		}
+		
+		var timer = setInterval(move,3000);
+		
+		function move(){
+			if(currentIndex == 5){
+				oUL.style.left = 0;
+				currentIndex = 1;
+			}
+			//oUL.style.left = oUL.offsetLeft - 810 + "px";
+			startMove(oUL, {left: currentIndex * -oLIs[0].offsetWidth});
+			for(var i=0;i<oNavlist.length;i++){
+				oNavlist[i].className = "";
+			}
+			oNavlist[currentIndex>=4 ? 0 : currentIndex].className = "active";
+			currentIndex++;
+		}
+		
+	}
+</script>
+</head>
+
+<body>
+	<div class="banner">
+		<ul class="img-list">
+			<li><img src="images/001.jpg"></li>
+			<li><img src="images/002.jpg"></li>
+			<li><img src="images/003.jpg"></li>
+			<li><img src="images/004.jpg"></li>
+		</ul>
+		
+		<ul class="banner-nav-list">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+</body>
+</html>

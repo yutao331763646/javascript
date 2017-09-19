@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<div id="box" style="width: 50px; height: 50px; background: black; position: absolute; left: 100px; top: 400px; border-radius: 50%;">
+			
+		</div>
+		
+		<div id="point" style="width: 50px; height: 50px; background: red; position: absolute; left: 1200px; top: 250px; border-radius: 50%;"></div>
+	</body>
+	<script type="text/javascript">
+		var ball = document.getElementById("box");
+		
+		//公式:  y = ax^2 + bx + c   ======> b=(y-ax^2)/x
+		//假设曲线过原点，则C为0
+		
+		//把初始目标当成原点，计算位置
+		var centerPoint = {x: 100, y:400};
+		
+		//在虚拟坐标系里， 计算出目标位置的坐标点
+		var targetPoint = {x: 1200-centerPoint.x, y: 250-centerPoint.y};
+		
+		var a = 0.001; //常量，正负决定开口方向，大小决定曲率
+		
+		//把targetPoint坐标带入，根据公式计算b的值
+		var b = (targetPoint.y-a*targetPoint.x*targetPoint.x)/targetPoint.x;
+		
+		//初始X坐标为0
+		var coordX = 0;
+		
+		setInterval(function(){
+			//在运动过程中， 首先计算出虚拟坐标系的X和Y，再加上centerPoint的位置，就是页面的实际位置了
+			ball.style.left = centerPoint.x + coordX + "px";
+			ball.style.top = centerPoint.y + a*coordX*coordX + b*coordX + "px";
+			coordX+=30;
+		},30);
+		
+	</script>
+</html>

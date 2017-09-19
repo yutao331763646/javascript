@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<link rel="stylesheet" type="text/css" href="dahuiji.css"/>
+	<script src="game.js" type="text/javascript" charset="utf-8"></script>
+	<script src="myplane.js" type="text/javascript" charset="utf-8"></script>
+	<script src="bullet.js" type="text/javascript" charset="utf-8"></script>
+	<script src="enemy.js" type="text/javascript" charset="utf-8"></script>
+	<script src="weapon.js" type="text/javascript" charset="utf-8"></script>
+	<script src="dom.js" type="text/javascript" charset="utf-8"></script>
+	<script src="cons.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<body>
+		<div class="main">
+			
+		</div>
+		
+		<ul id="options" class="options">
+			<li value="4">超级困难</li>
+			<li value="3">非常困难</li>
+			<li value="2">比较困难</li>
+			<li value="1">春哥附体</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var options = document.getElementById("options");
+		options.addEventListener("click", function(e){
+			var target = e.target;
+			if(target.nodeName == "LI" && target.value) {
+				new Game(target.value).start();
+				options.style.display = "none";
+			}
+		});
+	</script>
+</html>

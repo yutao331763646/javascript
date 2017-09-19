@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+	td {
+		padding : 5px;
+	}
+</style>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		//查
+		
+		//var btn = document.getElementById("createbtn"); //它返回单个DOM对象
+		//var btnlist = document.getElementsByTagName("button"); //它返回多个DOM元素(DOM的集合)， 这是一个伪数组
+		//var btnlist = document.getElementsByName("anniu");  //它返回多个DOM元素(DOM的集合)， 这是一个伪数组
+		var btnlist = document.getElementsByClassName("ccc"); //它返回多个DOM元素(DOM的集合)， 这是一个伪数组
+
+		for(var i=0;i<btnlist.length;i++){
+			log(btnlist[i]);
+		}
+/*
+		for(var i=0; i<btnlist.length; i++){
+			log(btnlist[i]);
+		}
+*/	
+/*
+		console.log(btnlist);
+		for(var attr in btnlist){
+			log( attr );
+		}
+*/	
+		
+		//
+	}
+</script>
+
+</head>
+
+<body>
+	row:<input type="text"/>
+	col:<input type="text"/>
+	<button id="createbtn" name="anniu" class="cccxyz active" >生成1</button>
+	<button id="createbtn" name="anniu" class="ccc next" >生成2</button>
+	
+</body>
+</html>

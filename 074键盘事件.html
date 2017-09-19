@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+body{font:12px; padding:0; margin:0;}
+#bigdiv{width:1000px;  margin:0 auto;}
+.smalldiv{width:auto; height:100px; background:#066;}
+.infoa{color:#fff;}
+
+</style>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var bd = document.getElementById("board");
+			document.onkeydown = function(e){
+				alert(1);
+				var e = e || event;
+				if(e.ctrlKey){
+					bd.innerText = "你刚才同时按下了ctrl和" + e.keyCode + "键";				
+				} else {
+					bd.innerText = "你刚才按下了" + e.keyCode + "键";				
+				}
+			}
+		}
+	</script>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-lg-offset-4">
+				<div class="panel panel-default">
+				  <div class="panel-heading">Panel heading without title</div>
+				  <div id="board" class="panel-body">
+						
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

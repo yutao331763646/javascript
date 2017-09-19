@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <style type="text/css">
+      
+     </style>
+	 <script src="js/common.js"></script>
+     <script type="text/javascript">
+        //函数名的要求, text  top  blur 有冲突，类似的名字不要使用
+		function foc(){
+			if(searchinput.value == "请输入你要查询的内容") {
+				searchinput.value = "";
+			}
+		}
+		
+		function blu(){
+			if(searchinput.value == "") {
+				searchinput.value = "请输入你要查询的内容";			
+			} 
+		}
+     </script>
+     <body>
+         <input type="text" id="searchinput" onfocus="foc()" onblur="blu()" class="searchinput" value="请输入你要查询的内容"/>
+     </body>
+
+</html>

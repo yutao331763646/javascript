@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	*{
+		font-family:'微软雅黑';
+		font-size:16px;
+	}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var arr=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9','0'];
+	var oBtn=document.getElementById('btn');
+	var oTxt=document.getElementById('txt');
+	
+	oBtn.onclick=function(){
+		var str='';
+		while(str.length<4){
+			var iNum=parseInt(Math.random()*100)
+			while(iNum>36){
+				iNum=parseInt(Math.random()*100)
+			}
+			str+=arr[iNum];
+		}
+		oTxt.value=str.toUpperCase();
+	}
+}
+
+</script>
+</head>
+
+<body>
+<input type="button" value="验证"  id="btn"/>
+<input type="text" value="5345"  id="txt" />
+</body>
+</html>

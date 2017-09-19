@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			padding: 0; margin: 0;
+		}
+		.main {
+			border: solid 1px black;
+			width: 600px; height: 512px;
+			background: url(img/bg_day.png) 0px 0;
+			margin: 20px auto;
+			position: relative;
+			
+			overflow: hidden;
+		}
+		.bird {
+			width: 37px; height: 27px;
+			background: url(img/bird0_0.png) no-repeat center;
+			position: absolute;
+			left: 50px; top: 200px;
+		}
+		.gameover {
+			width: 204px; height: 54px;
+			background: url(img/text_game_over.png);
+			margin: auto;
+			left: 0; top: 0; right: 0; bottom: 0;
+			position: absolute;
+			display: none;
+		}
+		.title {
+			width: 178px; height: 48px;
+			background: url(img/title.png);
+			margin: auto;
+			left: 0; top: 0; right: 0; bottom: 0;
+			position: absolute;
+		}
+		.bluebird {
+			display: block;
+			margin: 70px auto;
+		}
+		.start {
+			display: block;
+			position: absolute;
+			left: 240px; top:300px;
+			cursor: pointer;
+		}
+	</style>
+	<body>
+		<div class="main">
+			<div class="bird" style="display: none;"></div>
+			
+			<div class="gameover">
+				
+			</div>
+			
+			<div class="title">
+				
+			</div>
+			<img class="bluebird" src="img/bird1_0.png"/>
+			
+			<img class="start" src="img/button_play.png"/>
+		</div>
+		
+	</body>
+	<script src="js/jquery-2.0.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var gamerunning = false;
+		var flynum = 0;
+		var bluebird = $(".bluebird");
+		
+		//蓝色小鸟的翅膀运动
+		var bluebirdfly = setInterval(function(){
+			flynum++;
+			bluebird.attr("src","img/bird1_"+flynum+".png")
+			if(flynum==2) flynum=-1;
+		},100);
+		
+		//蓝色小鸟的上下跳动
+		var sign = 1;
+		jump();
+		function jump() {
+			if(!gamerunning) {
+				bluebird.animate({marginTop: 100 + 30*sign},1000, jump);
+				sign *= -1;
+			}
+		}
+		
+		$(".start").click(function(){
+			gamerunning = true;
+			//清理页面
+			bluebird.remove(); 
+			$(".title").remove();
+			$(".start").remove();
+			//开始游戏
+			gamestart();
+		});
+		
+		function gamestart() {
+			
+			$(".bird").show();
+			
+			var pipes = [];  //用来保存所有的管道
+			
+			/*关于背景的运动*/
+			var count = 0;
+			var movebg = setInterval(function(){
+				count -= 2;
+				var bg = $(".main");
+				bg.css("background", "url(img/bg_day.png) "+count+"px");
+			},30);
+			
+			/*小鸟翅膀的运动*/
+			var num = 0;
+			var birdfly = setInterval(function(){
+				num++;
+				var bird = $(".bird");
+				bird.css("background","url(img/bird0_"+num+".png) no-repeat center");
+				if(num==2) num=-1;
+			},200);
+			
+			/*小鸟的自由落体*/
+			var speedy = 0;
+			var birdfall = setInterval(function(){
+				var bird = $(".bird");
+				bird.css("top", bird.position().top + ++speedy + "px" );
+				
+				//判断小鸟是否跟 数组里的所有管道碰撞
+				for(var i=0; i<pipes.length; i++) {
+					
+					//求出碰撞的范围
+					var leftSide = pipes[i].position().left - bird.width();  //左边界
+					var rightSide = pipes[i].position().left + pipes[i].width();  //右边界
+					var topSide = pipes[i].position().top - bird.height();  //上边界
+					var downSide = pipes[i].position().top + pipes[i].height(); //下边界
+					
+					//如果鸟的坐标出现在碰撞范围内，则碰撞发生
+					//if(鸟的left>左边界 并且 <右边界 同时 鸟的top>上边界 并且 < 下边界)
+					if(bird.position().left>leftSide && bird.position().left<rightSide && bird.position().top>topSide && bird.position().top<downSide) {
+						clearInterval(birdfall); 
+						clearInterval(birdfly);
+						clearInterval(movebg);
+						clearInterval(autoCreatePipe);
+						//让所有管道的移动停止
+						for(var k=0; k<pipes.length; k++) {
+							pipes[k].stop();
+						}
+						
+						//显示GAMEOVER
+						$(".gameover").show();
+						break;
+					}
+				}
+			},50);
+	
+			/*小鸟的跳跃*/
+			$(document).keydown(function(e){
+				if(e.keyCode == 32) { //如果按下了空格键
+					speedy -= 15;
+				}
+			})
+			
+			var autoCreatePipe = setInterval(function(){
+				var pipeUp = $("<img>");
+				pipeUp.attr("src","img/pipe_up.png");
+				pipeUp.css({
+					position: "absolute",
+					left : 600,
+					bottom : -Math.round(Math.random()*150 + 100)
+				})
+				
+				var pipeDown = $("<img>");
+				pipeDown.attr("src", "img/pipe_down.png");
+				pipeDown.css({
+					position: "absolute",
+					left : 600,
+					top : -Math.round(Math.random()*150 + 100)
+				})
+				
+				//把两根管道都加入游戏中
+				$(".main").append(pipeUp);
+				$(".main").append(pipeDown);
+				
+				pipes.push(pipeUp);
+				pipes.push(pipeDown);
+				
+				//600px  开口向上的管道运动  600px+52px
+				pipeUp.animate({left: -52}, 9780, "linear", function(){
+					pipeUp.remove();
+					pipes.shift(); //删除数组的第一个元素
+				});
+				
+				//开口向下的管道运动
+				pipeDown.animate({left: -52}, 9780, "linear", function(){
+					pipeDown.remove();
+					pipes.shift(); //删除数组的第一个元素
+				});
+				
+			}, 6000);
+		}
+	</script>
+</html>

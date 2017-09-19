@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>qq延时提示符</title>
+<style type="text/css">
+body,div{margin:0;padding:0;}
+.page{width:1360px;height:768px;background:url(image/bg.png) no-repeat;margin:0 auto; position:relative;}
+.right{width:306px;height:530px;background:url(image/qq.png) no-repeat;position:absolute;right:15px;top:20px;}
+#head{width:50px;height:50px;background:url(image/link.png) 0 -50px no-repeat;float:left;margin:265px 0 0 7px;}
+a#head:hover{ background-position: 0px 1px;}
+#left{width:279px;height:334px;background:url(image/prompt.png) no-repeat;position:absolute;top:250px;left:-282px;display:none;}
+</style>
+<script type="text/javascript">
+/*
+window.onload=function(){
+	var isIn = false; //鼠标是否在info当中
+	var avatar = document.getElementById("head");
+	var info = document.getElementById("right");
+	avatar.onmouseover = function(){
+		setTimeout(function(){
+			info.style.display = "block";
+		},500);
+	}
+	avatar.onmouseout = function(){
+		setTimeout(function(){
+			if(!isIn) {
+				info.style.display = "none";
+			}
+		},1000);
+	}
+	info.onmouseover = function(){
+		isIn = true;
+		info.style.display = "block";
+	}
+	info.onmouseout = function(){	
+		isIn = false;
+		info.style.display = "none";
+	}
+};
+*/
+</script>
+</head>
+<body>
+	<div class="page">
+		<div class="right">
+			<a href="###" id="head"></a>
+			<div id="left"></div>
+		</div>
+	</div>
+</body>
+	<script>
+		onload = function(){
+			var t = null;
+			var _head = document.getElementById("head");
+			var _left = document.getElementById("left");
+			_head.onmouseover = function(){
+				_left.style.display = "block";
+			}
+			
+			_head.onmouseout = function(){
+				t = setTimeout(function(){
+					_left.style.display = "none";				
+				}, 300);
+			}
+			
+			_left.onmouseover = function(){
+				this.style.display = "block";
+				clearTimeout(t);
+			}
+			
+			_left.onmouseout = function(){
+				this.style.display = "none";	
+			}
+		}
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</html>

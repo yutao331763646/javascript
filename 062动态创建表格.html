@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+	td {
+		padding : 5px;
+	}
+</style>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		var btn = document.getElementsByTagName("button")[0];
+		btn.onclick = function() {
+			var row = document.getElementsByTagName("input")[0].value;
+			var col = document.getElementsByTagName("input")[1].value;
+			var tab = document.createElement("table");
+			tab.border = 1;
+			document.body.appendChild(tab);
+			
+			for(var i=0; i<row; i++){
+				var tr = document.createElement("tr");
+				tab.appendChild(tr);
+				for(var j=0; j<col; j++){
+					var td = document.createElement("td");
+					td.innerHTML = randomInt(1,100);
+					td.style.background = "rgb("+randomInt(0,255)+","+randomInt(0,255)+","+randomInt(0,255)+")";
+					tr.appendChild(td);
+				}
+			}
+		}
+	}
+</script>
+
+</head>
+
+<body>
+	row:<input type="text"/>
+	col:<input type="text"/>
+	<button>生成</button>
+	
+</body>
+</html>

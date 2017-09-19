@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<div id="box" style="width: 50px; height: 50px; background: black; position: absolute; left: 100px; top: 150px; border-radius: 50%;">
+			
+		</div>
+		
+		<div id="point" style="width: 5px; height: 5px; background: red; position: absolute; left: 800px; top: 400px;"></div>
+	</body>
+	<script type="text/javascript">
+		var ball = document.getElementById("box");
+
+		//目标位置
+		var target = {left: 800, top:400};
+		//设定为100步，用总距离/100,求出步长，由于做了取整，导致实际运动次数并不是100
+		var speedx = Math.floor((target.left-ball.offsetLeft)/100);
+		var speedy = Math.floor((target.top-ball.offsetTop)/100);
+		
+		//根据实际速度，求出水平方向的实际运动次数
+		var timesx = (target.left-ball.offsetLeft) / speedx;
+		//总的运动时间
+		var totaltimes = 50*timesx;
+		//根据实际速度，求出垂直方向的实际运动次数
+		var timesy = (target.top-ball.offsetTop) / speedy;
+		
+		var t = setInterval(function(){
+			ball.style.left = ball.offsetLeft + speedx + "px";
+			if(ball.offsetLeft >= target.left) {
+				clearInterval(t);
+			}
+		},50);
+		var t2 = setInterval(function(){
+			ball.style.top = ball.offsetTop + speedy + "px";
+			if(ball.offsetTop >= target.top) {
+				clearInterval(t2);
+			}
+		},/*垂直方向的时间间隔*/totaltimes/timesy);
+	</script>
+</html>

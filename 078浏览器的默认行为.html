@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>DOM操作</title>	
+	</head>
+	<style>
+		
+	</style>
+	<script src="js/common.js"></script>
+	<body>
+		<a id="link" href="#" >百度</a>
+		
+		<form action="http://www.baidu.com" method="post">
+			<button id="save">保存</button>
+		</form>
+		<script>
+			/*document.oncontextmenu = function(e){
+				//阻止浏览器的默认行为
+				var e = e || event;
+				alert("ok");
+				e.preventDefault();
+			}
+			
+			link.addEventListener("click", function(e){
+				var e = e || event;
+				e.preventDefault();
+			})
+			
+			save.addEventListener("click", function(e){
+				var e = e || event;
+				e.preventDefault();
+			})*/
+			var save = document.getElementById("save");
+			save.attachEvent("onclick", function(){
+				window.event.returnValue = false;
+			})
+			
+			
+		</script>
+	</body>
+	
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

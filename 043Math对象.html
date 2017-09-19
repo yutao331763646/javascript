@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <style type="text/css">
+      
+     </style>
+	 <script src="js/common.js"></script>
+     <body>
+        <span id="checkcode"></span><button onclick="createCode(10)">生成验证码</button>
+         
+     </body>
+     <script type="text/javascript">
+		//for(var i=0; i<10; i++) log( randomInt(99,100) );
+		//log(123);
+		function createCode(len){
+		
+			var str = "";
+			for(var i=0; i<len; i++) {
+				
+				/*
+				for( var ascii = randomInt(48,90); ascii >=58 && ascii <=64 ; ascii = randomInt(48,90)) {
+					
+				}
+				*/
+				
+				var ascii = randomInt(48,90);
+				while(ascii >=58 && ascii <=64) { //随机结果不符合要求
+					ascii = randomInt(48,90);
+				}
+				
+				//console.log(ascii);
+				str += String.fromCharCode(ascii);			
+			}
+			console.log(str);
+		}
+		
+		
+		var count = 0; //总攻击次数
+		var pcount = 0; //暴击次数
+		var fixp =  0.2; //期望概率
+		var c = 0.0557; //种子
+		
+		for(var i=0; i<10000; i++) {
+			var num = Math.random();
+			if(num <= fixp){
+				//暴击发生了
+				pcount++;
+				
+				fixp = c;
+				
+			} else {
+				fixp += c;
+			}
+			count++;
+		}
+		
+		console.log(pcount/count);
+		
+		
+     </script>
+</html>

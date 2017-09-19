@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+.item{
+	width:100px; height:50px; background:#eee; border: solid 1px gray; position:relative; 
+}
+.fold{
+	display:none;
+}
+.unfold{
+	display:block;
+}
+</style>
+</head>
+<script src="js/base.js"></script>
+<script src="startMove.js"></script>
+<script>
+	
+	window.onload = function(){
+		var olink = document.getElementById("morelink");
+		olink.onclick = function(){
+			var oDiv = this.nextElementSibling;//获取this的下一个元素节点
+			var items = oDiv.getElementsByTagName("div");
+			if(oDiv.className == "fold") {
+				oDiv.className = "unfold";
+				for(var i=0;i<items.length;i++){
+					startMove(items[i],{height:50});
+				}
+			} else {
+				oDiv.className = "fold";
+				for(var i=0;i<items.length;i++){
+					startMove(items[i],{height:0});
+				}
+			}
+		}
+	}
+	
+
+</script>
+<body>
+	<div id="morelink" class="item" style="height: 30px;display:block;">更多产品</div>
+	<div id="items" class="fold">
+		<div class="item">产品1</div>
+		<div class="item">产品2</div>
+		<div class="item">产品3</div>
+		<div class="item">产品4</div>
+		<div class="item">产品5</div>
+	</div>
+	
+	<p id="number"> </p>
+</body>
+</html>
